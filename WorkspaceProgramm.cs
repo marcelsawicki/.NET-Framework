@@ -6,6 +6,6 @@ class Example3
 	{
 	}
 	
-	private static Example4(){}
+	private static Example5(){}
 }
 }
