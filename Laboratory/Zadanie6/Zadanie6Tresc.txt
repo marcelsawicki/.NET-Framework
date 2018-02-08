@@ -1,0 +1,11 @@
+Laboratorium 6
+
+Ćwiczenie 1
+Napisz serwis oparty na bazie danych typu kategoria-produkt
+(np. dział-osoba, gatunek muzyki-płyta).
+
+Ćwiczenie 2
+Do systemu dopisz opcję logowania się z użyciem bazy danych i opcję spradzania czy użytkownik ma prawo wykonywać dany skrypt. Użyj zmiennych sesyjnych.
+
+Ćwiczenie 3*
+Dopisz obsługę koszyka zakupów.

@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 
+    1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server" >
+    <title>Master page title</title>
+    <style>
+        div#vmenu { 
+           margin: 0; 
+           padding: .25em 0em .25em 0em; 
+           border: solid 1px #30c9e0; 
+           background: #fcac4c; 
+           width: 13.5em; 
+        } 
+
+        div#vmenu ul { 
+           margin: 0; 
+           padding: 0; 
+           list-style: none; 
+        } 
+
+        div#vmenu ul li { 
+           margin: 0; 
+           padding: 0; 
+           list-style: none; 
+        } 
+
+        div#vmenu ul a:link { 
+           margin: 0; 
+           padding: .2em 0em .2em .4em; 
+           text-decoration: none; 
+           font-weight: bold; 
+           font-size: medium; 
+           background-color: #fcac3c; 
+           color: #0059a0; 
+           display: block; 
+        } 
+
+        div#vmenu ul a:active { 
+           margin: 0; 
+           padding: .25em .5em .25em .5em; 
+           text-decoration: none; 
+           font-weight: bold; 
+           font-size: medium; 
+           background: #4d8cba; 
+           color: #ffffff; 
+           display: block; 
+        } 
+
+        div#vmenu ul a:visited { 
+           margin: 0; 
+           padding:  .25em .5em .25em .5em; 
+           text-decoration: none; 
+           font-weight: bold; 
+           font-size: medium; 
+           background: #4d8cba; 
+           color: #ffffff; 
+           display: block; 
+        } 
+
+        div#vmenu ul li a:hover { 
+           margin: 0; 
+           padding: .2em 0em .2em .4em; 
+           text-decoration: none; 
+           font-weight: bold; 
+           font-size: medium; 
+           background-color: #30c9e0; 
+           color: #ffffff; 
+           display: block; 
+        } 
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table>
+           <tr>
+         <div id="vmenu">
+                  <header class=”main_headline”>
+                                <nav>
+                                        <ul>
+                                                <li><a href="PierwszaStrona.aspx">Pierwsza strona</a></li>
+                                                <li><a href="DrugaStrona.aspx">Druga strona</a></li>
+                                                <li><a href="TrzeciaStrona.aspx">Trzecia strona</a></li>
+                                                <li><a href="CzwartaStrona.aspx">Czwarta strona</a></li>
+                                        </ul>
+                                </nav>
+                   </header>
+           </div>
+
+        
+               <asp:contentplaceholder id="Main" runat="server" />
+           </tr>
+        </table>
+        <td><asp:contentplaceholder id="Footer" runat="server" /></td>
+    </form>
+</body>
+</html>

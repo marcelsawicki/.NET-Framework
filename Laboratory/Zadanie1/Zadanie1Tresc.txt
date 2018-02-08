@@ -1,0 +1,7 @@
+Zadanie domowe L1  
+Ćwiczenie 1 – Utwórz formularz HTML(lub ASP.NET) 10 różnych typów pól. Wyślij metodą POST i „odbierz” dane za pomocą ASP.NET   
+Ćwiczenie 2 – Napisz ankietę 10 różnych typów w ASP.NET i użyj odpowiednie walidatory sprawdzające poprawność zawartości. 
+Ćwiczenie 3 – Napisz prosty zbiór 2 plików ASP.NET realizujący proste logowanie (hasło może być w kodzie).   
+				Wersja :
+				a)Wyślij i odbierz hasło i login metodą POST Wersja 
+				b)Wyślij i odbierz hasło i login metodą GET

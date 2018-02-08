@@ -1,0 +1,15 @@
+Laboratorium 4
+
+Ćwiczenie 1
+Uzupełnij program z poprzednich laboratoriów o
+obsługę standardowych wyjątków: 
+dzielenie przez zero,
+niepoprawny typ danych,
+przekroczenie zakresu typu.
+
+Ćwiczenie 2
+Popraw program obsługi kalkulatora aby za każdym razem
+nie był tworzony nowy obiekt.
+
+Ćwiczenie 3
+Wykorzystaj w programie tablicę oraz wybraną kolekcję.
