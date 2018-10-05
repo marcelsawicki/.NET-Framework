@@ -5,16 +5,78 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
-
+using Newtonsoft.Json;
 namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string hashFile1 = CalculateMD5("TextFile1.txt");
-            string hashFile2 = CalculateMD5("TextFile2.txt");
-            string hashFile3 = CalculateMD5("TextFile1.txt");
+
+            try
+            {
+                // Get the current directory.
+                string path = Directory.GetCurrentDirectory();
+                string target = path + "\\Container";
+                Console.WriteLine("The current directory is {0}", target);
+                if (!Directory.Exists(target))
+                {
+                    Directory.CreateDirectory(target);
+                }
+
+                // Change the current directory.
+                Environment.CurrentDirectory = (target);
+                if (target.Equals(Directory.GetCurrentDirectory()))
+                {
+                    Console.WriteLine("You are in the temp directory.");
+                }
+                else
+                {
+                    Console.WriteLine("You are not in the temp directory.");
+                }
+
+                Console.WriteLine("The current directory is {0}", target);
+
+                string[] files = Directory.GetFiles(target);
+
+
+                List<Results> resultRows = new List<Results>();
+                int autoIncrement = 0;
+                foreach (string item in files)
+                {
+                    autoIncrement++;
+                    var justFilename = Path.GetFileName(item);
+                    Console.WriteLine("Files in current directory are {0}", justFilename);
+                    string hashFile = CalculateMD5(item);
+                    Console.WriteLine("Calculate MD5: {0}", hashFile);
+                    resultRows.Add(new Results { ID = autoIncrement, FileName = justFilename, FileMD5 = hashFile });
+                }
+
+                string json = JsonConvert.SerializeObject(resultRows);
+
+                System.Console.WriteLine(json);
+
+                string[] lines = { "First line", "Second line", "Third line" };
+
+                // Set a variable to the My Documents path.
+                //string mydocpath =
+                //    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                // Write the string array to a new file named "WriteLines.txt".
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(path, "WriteJson.txt")))
+                {
+                        outputFile.WriteLine(json);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+
+            //string path = Directory.GetCurrentDirectory();
+
+
 
             string source = "Hello World!";
             using (MD5 md5Hash = MD5.Create())
