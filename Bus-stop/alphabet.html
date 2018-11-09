@@ -26,17 +26,15 @@
 		randomSurprise =  ~~(Math.random()*100);
 		
 		if(secret[secret.length]!==null && randomSurprise > 50) {
-			secretSeed = ~(~1e6 % 333 << 4) % 4;
+			secretSeed = ~~(~1e6 % 333 << 4) % 4;
 		}
 		else
 		{
-			secretSeed = typeof(secret&&secret.length === typeof(secretSeed)?1:0);
+			secretSeed = typeof(secret&&secret.length) === typeof(secretSeed)?1:0;
 		}
 		
-		recursiveRiddle(secret, secretSeed);
+			recursiveRiddle(secret, secretSeed);
 	}
 </script>
 </head>
-<body>
-</body>
-</html>
+<body> 
