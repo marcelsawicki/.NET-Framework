@@ -5,61 +5,23 @@
     int goNext = Model.Id;
 }
 
-<h2>Details</h2>
+<h2>Like</h2>
 
 <div>
-    <h4>Stories</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Select picture:
-        </dt>
-        <dd>
-            <a asp-action="Details" onclick="@(goNext+=1)" asp-route-id="@goNext">Next</a>
-        </dd>
-        <dd>
-            <a asp-action="Details" onclick="@(goNext-=2)" asp-route-id="@goNext">Previous</a>
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
-        <dd>
-            <img src="@Html.DisplayFor(model => model.Picture)" />
-        </dd>
-        <dt>Path: </dt>
-        <dd>@Html.DisplayFor(model => model.Picture)</dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Subscription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Subscription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Comment)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Likes)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Likes)
-        </dd>
-        <dd>
-            <a asp-action="Like" asp-route-id="@Model.Id">Like it!</a>
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Unlikes)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Unlikes)
-        </dd>
-    </dl>
+    <br />
+
+    @Html.ActionLink("Previous", "Details", "Home", new { id = Model.Id - 1 }, htmlAttributes: new { @class = "btn btn-success", @role = "button" })
+    @Html.ActionLink("Next", "Details", "Home", new { id = Model.Id + 1 }, htmlAttributes: new { @class = "btn btn-success", @role = "button" })
+    <br />
+    <br />
+    <img src="@Html.DisplayFor(model => model.Picture)" />
+    <br />
+
+    @Html.DisplayFor(model => model.Subscription)
+
+    @Html.DisplayFor(model => model.Comment)
+
+    Likes: @Html.DisplayFor(model => model.Likes)
+
+    Unlikes:  @Html.DisplayFor(model => model.Unlikes)
 </div>
