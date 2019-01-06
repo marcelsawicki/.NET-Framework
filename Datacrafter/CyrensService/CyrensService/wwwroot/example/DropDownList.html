@@ -1,0 +1,38 @@
+﻿<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>ComboBox Geonames binding - jsFiddle demo by krustev</title>
+
+<link type="text/css" rel="stylesheet" href="data:text/css,">
+  
+	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2013.3.1030/styles/kendo.common.min.css" />
+		<link rel="stylesheet" href="http://cdn.kendostatic.com/2013.3.1030/styles/kendo.default.min.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script><link type="text/css" rel="stylesheet" href="data:text/css,">
+        <script src="http://cdn.kendostatic.com/2013.3.1030/js/kendo.all.min.js"></script>
+
+
+</head>
+<body>
+    <h1>Kendo DropDownList Example</h1>
+    <input id="products" />
+
+    <script type="text/javascript">
+
+        $("#products").kendoDropDownList({
+            dataTextField: "ProductName",
+            dataValueField: "ProductID",
+	        optionLabel: " ",
+            dataSource: {
+                transport: {
+                    read: {
+			            dataType: "jsonp",
+                        url: "http://demos.kendoui.com/service/Products",
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<meta charset="UTF-8">
+<h2>Index</h2>
+<a href="#lista1">Lista 1</a>.
+<a href="#lista2">Lista 2</a>.
+<a href="#lista3">Lista 3</a>.
+
+<h1> Definicje </h1>
+Agregacja: <br />
+<span>
+    Agregacja (ang. aggregation): tworzenie nowej klasy, przy uzyciu klas juz istniejacych. <br />
+    Nowa klasa moze byc zbudowana z dowolnej liczby obiektow (obiekty te moga byc dowolnych typow) i <br />
+    w dowolnej kombinacji, by uzyskac zadany efekt. Jest to relacja typu "zawiera" np.: <br />
+    "samochod zawiera kola i silnik" - gdzie "samochod", "kolo" i "silnik" sa klasami. <br />
+    Symbol - linia zakonczona rombem. <br />
+</span>
+<br />
+<img src="~/diagrams/Agregacja.jpg" />
+<br />
+<br />
+Kompozycja: <br />
+<span>
+    Kompozcyja (ang. composition): skladanie sie obiektu z obiektow skladowych, ktore nie moga <br />
+    istniec bez obiektu glownego. Kompozycja jest relacaja typu "posiada". Dana czesc moze nalezec <br />
+    tylko do jednej calosci. Czesc nie moze istniec bez calosci, a usuniecie calosci powoduje <br />
+    automatyczne usuniecie wszystkich czesci zwiazanych z nia zwiazkiem kompozycji. <br />
+    Symbol - linia zakonczona zaczernionym rombem.
+</span>
+<br />
+<img src="~/diagrams/Kompozycja.jpg" />
+<br />
+<br />
+Generalizacja: <br />
+<span>
+    Generalizacja – związek opisujący dziedziczenie po klasach. Na diagramie generalizację oznacza się <br />
+    za pomocą niewypełnionego trójkąta symbolizującego strzałkę (skierowaną od klasy pochodnej do <br />
+    klasy bazowej). <br />
+</span>
+<br />
+<img src="~/diagrams/Generalizacja.jpg" />
+<br />
+<br />
+Asocjacja: <br />
+<span>
+    Asocjacja wskazuje na trwałe powiązanie pomiędzy obiektami danych klas (np. firma zatrudnia pracowników). <br />
+    Na diagramie asocjację oznacza się za pomocą linii, która może być zakończona strzałką  <br />
+    (oznaczającą kierunek powiązania klas). Nazwę cechy wraz z krotnością umieszcza się w punkcie <br />
+    docelowym asocjacji. <br />
+</span>
+<h1 id="lista1"> Lista 1</h1>
+Zadanie 1:
+<span>
+    Zbudowac obiektowy model budynku. Model ma wyrazac tylko aspekt statyczny i ma byc <br />
+    reprezentowany przez diagram klas. Przyjac, ze perspektywa modelowania jest poziom <br />
+    pomieszczen. Pomieszczenia moga byc roznych rodzajow (np. pokoje pracy indywidualnej, <br />
+    laboratioria, pomieszczenia gospodarcze, socjalne itp. ), pomieszcenia moga byc <br />
+    zgrupowane na rozne sposoby (np. na pietra), moga pomiedzy nimi zachodzic rozne <br />
+    relacje, zwiazki (np. sasiedztwa polozenia w poziomie lub pionie, powiazania instalacjami <br />
+    grzewczymi, elektrycznymi ).<br />
+    Podac przyklady bardziej szczegolowego i bardziej ogolnego poziomu abstrakcji w modelowaniu <br />
+    budynku. <br />
+</span>
+<br />
+<img src="~/diagrams/Zadanie1.jpg" />
+<br />
+<br />
+Zadanie 1 (Przykład 1):
+<span>
+    Rozkład sieci komputerowej <br />
+</span>
+<br />
+<img src="~/diagrams/serw.jpg" />
+<br />
+<br />
+Zadanie 2:
+<span>
+    Zbudowac diagram klas, ktory jest modelem prostego systemu plikow, ktory sklada sie z <br />
+    hierarchii kartotek, z ktorych kazda moze zawierac dowolne pliki. Jakie operacje nalezy <br />
+    uwzglednic, aby byla mozliwa modyfikacja struktury katalogow? Zinterpretowac zmiany <br />
+    struktury katalofu w terminach zmian diagramow obiektow. <br />
+</span>
+<br />
+<img src="~/diagrams/zadanie2.jpg" />
+<br />
+<br />
+Zadanie 3:
+<span>
+    Okreslic licznosc koncow asocjacji. Wygenerowac przykladowe diagramy obiektow dla diagramu klas. <br />
+</span>
+<br />
+<img src="~/diagrams/Zadanie3.jpg" />
+<br />
+<br />
+Przyklad 1:
+<span>
+    Przyklad. <br />
+</span>
+<br />
+<img src="~/diagrams/Przyklad1.jpg" />
+<br />
+<br />
+<p id="lista2">
+<h1> Lista 2</h1>
+Zadanie 1:
+<span>
+    Przedstaw instancje (diagramy obiektow) podanych nizej diagramow klas. <br />
+    Diagramy obiektow powinny zawierac przynajmniej cztery obiekty. <br />
+</span>
+<br />
+<img src="~/diagrams/Lista2_Zadanie1.jpg" />
+<br />
+<br />
+Zadanie 2:
+<span>
+    Kazdy z diagramow w zadaniu 1 przetransformuj na dwa oddzielne diagramy, <br />
+    z ktorych kazdy bedzie zawierac tylko jeden rodzaj zwiazku: <br />
+    jeden zwiazek generalizacji, <br />
+    drugi - zwiazek agregacji <br />
+</span>
+<br />
+<img src="~/diagrams/Lista2_Zadanie2.jpg" />
+<br />
+<br />
+Zadanie 3:
+<span>
+    Podaj przyklady diagramow klas, ktorych instancje (diagramy obiektow) sa zawsze nieskonczone <br />
+</span>
+<br />
+<img src="~/diagrams/Lista2_Zadanie3.jpg" />
+<br />
+<br />
+</p>
+<h1 id="lista3"> Lista 3</h1>
+Zadanie 1:
+<span>
+    System bankomatow (SB) sklada sie z pewnej liczby bankomatow podlaczonych do jednego serwera <br />
+    centralnego, ktory jest umieszczony w pewnym banku. Bank ten wspolpracuje z innymi bankami <br />
+    pozwalajac klientom tych bankow korzystac z sieci bankomatow. Uzytkownik bankomatu ma karte wydana <br />
+    przez bank, w ktorym ma zalozone konto. Posiadanie karty umozliwia uzytkownikowi przeprowadzenie z <br />
+    bankomatu transakcji w celu sprawdzenia stanu swojego konta oraz wybrania pieniedzy. Wszystkie <br />
+    przeprowadzone transakcje sa rejestrowane w centralnym serwerze. <br />
+    a) opracowac diagram klas modelujacy system (SB) <br />
+    b) zdefiniowac diagram przypadkow uzycia opisujacy uslugi systemu (SB) <br />
+    c) dla wybranego przypadku uzycia opisz w jezyku naturalnym jego scenariusze (typowe, alternatywne, wyjatkowe) <br />
+    d) przedstaw diagram sekwencji reprezentujacy opisane wyzej scenariusze <br />
+</span>
+<br />
+<img src="~/diagrams/sbank.jpg" />
+<br />
+<br />

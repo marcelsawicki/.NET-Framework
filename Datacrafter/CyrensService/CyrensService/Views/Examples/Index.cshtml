@@ -1,0 +1,84 @@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .examples {
+        white-space: pre-wrap;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+<h1>Examples</h1>
+
+<p class="examples">
+    <span class="examples">
+        Example 1, Description:
+        Choose on the grid the starting point and then select the destination point.
+        An algorithm will find a path between them.
+        <a href="~/pathfinder/PathFinder.html">1. Pathfinder example.</a>
+    </span>
+
+    <span class="examples">
+        Example 2, Description:
+        DropDownList
+        <a href="~/example/DropDownList.html">2. DropDownList example.</a>
+    </span>
+
+    <span class="examples">
+        Example 3, Description:
+        Quiz
+        <a href="~/example/Quiz.html">3. Quiz example.</a>
+    </span>
+
+    <span class="examples">
+        Example 4, Description:
+        Quiz Vue
+        <a href="http://datacrafter.pl/quiz/quiz.html">4. Quiz about foreign country</a>
+    </span>
+
+    <span class="examples">
+        Example 5, Description:
+        Cube
+        <a href="~/cube/cube.html">5. Draw three dimensional shape on a canvas</a>
+    </span>
+
+    <span class="examples">
+        Example 6, Description:
+        Menu
+        <a href="~/structural/index.htm">6. User experience</a>
+    </span>
+</p>
+
+<canvas id="shareholders-chart" width="800" height="450"></canvas>
+
+<script>
+
+    new Chart(document.getElementById("shareholders-chart"), {
+        type: 'line',
+        data: {
+            labels: [2016, 2017, 2018, 2019, 2020, 2021],
+            datasets: [{
+                data: [36.93, 49.79, 32.34, 29.46],
+                lineTension: 0,
+                label: "Datacrafter Stock Chart (in PLN)",
+                borderColor: "#3e95cd",
+                fill: false
+            }]
+        },
+        options: {
+            responsive: false,
+            title: {
+                display: true,
+                text: 'Datacrafter Stock Chart (in PLN)'
+            }
+        }
+    });
+
+</script>
+
+<div id="app-main">
+    <galeria-cyrens> </galeria-cyrens>
+</div>
+<script src="~/js/main.js"></script>
