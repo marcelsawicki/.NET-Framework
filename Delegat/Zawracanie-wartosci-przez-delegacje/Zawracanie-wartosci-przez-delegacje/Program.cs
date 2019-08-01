@@ -12,11 +12,17 @@ namespace Zawracanie_wartosci_przez_delegacje
 
         public static int Dodaj(int argument1, int argument2)
         {
-            return 0;
+            int wynik = argument1 + argument2;
+            return wynik;
         }
 
         static void Main(string[] args)
         {
+            Delegacja del = Dodaj;
+            int wartosc = del(4, 8);
+            Console.WriteLine("Wynikiem jest {0}.", wartosc);
+
+            Console.ReadKey();
         }
     }
 }
