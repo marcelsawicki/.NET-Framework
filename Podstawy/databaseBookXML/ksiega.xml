@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<guestbook>
-  <guest>
-    <name>written names</name>
-    <e-mail>written e-mail</e-mail>
-    <comment>written comments and suggestions</comment>
-    <obrazek path="http://cyrens.pl/content/2.JPG" />
-  </guest>
-</guestbook>

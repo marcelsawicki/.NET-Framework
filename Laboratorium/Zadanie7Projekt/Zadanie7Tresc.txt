@@ -1,2 +1,0 @@
-Projekt - serwis internetowy z dostępem do bazy danych,
-np. "sklep internetowy"

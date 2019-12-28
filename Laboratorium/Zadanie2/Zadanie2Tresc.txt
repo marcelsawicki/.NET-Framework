@@ -1,5 +1,0 @@
-﻿Zadanie Domowe   
-Proszę zrealizować prosty serwis WWW oparty na 4-5 podstronach z: 
-- stroną wzorcową  
-- menu nawigacyjnym   
-(sugerowane – strona do projektu)  
