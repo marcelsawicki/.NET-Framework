@@ -1,0 +1,51 @@
+<html>
+<head>
+	<script>
+	window.onload = function()
+	{
+		// ustaw wysokosc i szerokosc pojedynczego kafla
+		var tileMap = [];
+
+		var tile = {
+			width: 6,
+			height: 6
+		}
+		// wyrenderuj siatke
+		var renderGrid = function(tile)
+		{
+			console.log("Start render grid!");
+			var canvas = document.getElementById("board");
+			var ctx = canvas.getContext('2d');
+			//ctx.strokeRect(20, 20, 150, 100);
+			var startRow = 1;
+			var rowCount = 25;
+			var startCol = 1;
+			var colCount = 25;
+			
+			for(var col = startCol; col < colCount; col++)
+			{
+				for(var row = startRow; row < rowCount; row++)
+				{
+					var tilePositionX = tile.width*col;
+					var tilePositionY = tile.height*row;
+					ctx.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
+				}
+			}
+			
+			
+			tileMap[0]=[];
+			tileMap[1]=[];
+			
+			tileMap[0]=[1,2]
+			tileMap[1]=[2,3]
+		}
+			
+		renderGrid(tile);
+	}
+	</script>
+</head>
+<body>
+	<canvas id="board" width="600" heigth="300"></canvas> 
+
+</body>
+<html>
