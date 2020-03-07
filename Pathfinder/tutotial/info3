@@ -1,0 +1,51 @@
+A navigation mesh for dynamic environments
+https://www.youtube.com/watch?v=tH9dNESH4ic
+
+A* Path finding on a nav mesh
+youtube.com/watch?v=BgMy8OQYzws
+
+Navmesh generation and path finding
+https://www.youtube.com/watch?v=yqgOq7DDcAI
+
+
+path vs flow field
+https://www.youtube.com/watch?v=N1XXw4KJJrg
+
+Compare A* with Dijkstra algorithm
+https://www.youtube.com/watch?v=g024lzsknDo
+
+
+tutaj jest opisane dlaczego potrzeba AI zeby postacie chodzily bardziej realistycznie w zmieniajacym sie srodowisku:
+https://arrow.tudublin.ie/cgi/viewcontent.cgi?article=1063&context=itbj
+
+
+Wyklady:
+4.2 All Pairs Shortest Path (Floyd-Warshall) - Dynamic Programming
+https://www.youtube.com/watch?v=oNI0rf2P9gE
+
+.4 Bellman Ford Algorithm - Single Source Shortest Path - Dynamic Programming
+https://www.youtube.com/watch?v=FtN3BYH2Zes
+
+
+Empowering A
+Search Algorithms with Neural Networks for
+Personalized Route Recommendation
+
+https://arxiv.org/pdf/1907.08489.pdf
+
+Bellman Ford Algorithm-Single Source Shortest Path | Dynamic Programming
+dziewczyna tlumaczy Bellmana-Forda
+https://www.youtube.com/watch?v=KudAWAMiQog
+
+
+dziewczyna tlumaczy Floyd-Warshall
+Floyd Warshall Algorithm All Pair Shortest Path algorithm | data structures and algorithms
+https://www.youtube.com/watch?v=Gc4mWrmJBsw
+
+PATH-FINDING IN UNKNOWN ENVIRONMENTS
+http://members.tripod.com/kumar_anustup/syn2.htm
+
+
+
+Finding shortest paths with Graph Neural Networks
+https://medium.com/octavian-ai/finding-shortest-paths-with-graph-networks-807c5bbfc9c8

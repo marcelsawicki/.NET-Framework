@@ -1,0 +1,15 @@
+Materiały do pracy magisterskiej:
+
+Problemy zwiazane ze znajdowaniem najkrotszych sciezek to:
+
+Dzielenie srodowiska po ktorym bedzie poruszal sie obiekt na siatki, tzn. dyskretyzacja
+
+Podstawowym haslem tego problemu jest: Navigation Meshes
+
+Dzielić na siatki można na kilka sposobów:
+"
+"
+
+
+Przykładowa praca magisterska na podobny temat znajduje sie pod tym adresem:
+https://www.cs.au.dk/~gerth/advising/thesis/anders-strand-holm-vinther_magnus-strand-holm-vinther.pdf
