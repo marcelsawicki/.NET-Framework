@@ -10,6 +10,30 @@
 			width: 15,
 			height: 15
 		}
+		
+		var grid = {
+			width: 25,
+			height: 25
+		}
+		
+		// losuj przeszkody
+		var generateRandomElement = function()
+		{
+			var randomColumn = Math.floor(Math.random()*(grid.width + 1));
+			var randomRow = Math.floor(Math.random()*(grid.height + 1));
+			
+			if(tileMap[randomColumn] == null)
+			{
+				tileMap[randomColumn] = [];
+			}
+			tileMap[randomColumn][randomRow] = 1;
+			/*
+			tileMap[1]=[];
+			tileMap[1][1]=1;
+			*/
+		}
+			
+			
 		// wyrenderuj siatke
 		var renderGrid = function(tile)
 		{
@@ -29,23 +53,27 @@
 					var tilePositionX = tile.width*col;
 					var tilePositionY = tile.height*row;
 					ctx.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
+					
+					if(tileMap[col] != null && tileMap[col][row] != null)
+					{
+						ctx.fillRect(tilePositionX, tilePositionY, tile.width, tile.height);
+					}
 				}
 			}
 			
-			
-			tileMap[0]=[];
-			tileMap[1]=[];
-			
-			tileMap[0]=[1,2]
-			tileMap[1]=[2,3]
 		}
-			
+		
+		for(var k=0; k < 100; k++)
+		{
+			generateRandomElement();
+		}
+		
 		renderGrid(tile);
 	}
 	</script>
 </head>
 <body>
-	<canvas id="board" width="600" heigth="300"></canvas> 
+	<canvas id="board" width="800" height="800"></canvas> 
 
 </body>
 <html>
