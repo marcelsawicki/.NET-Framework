@@ -1,0 +1,11 @@
+Nordwest-Eckenregel (NWE) - Transportoptimierung / Lineare Optimierung / Operations Research
+https://www.youtube.com/watch?v=-CTb3KkhanM
+
+Matrix-Minimum-Methode (MMM) - Transportoptimierung / Lineare Optimierung / Operations Research
+https://www.youtube.com/watch?v=bsXqAPYQRS8
+
+Methode der Potentiale (MODI) - Transportoptimierung / Lineare Optimierung
+https://www.youtube.com/watch?v=NIumBsf7kbI
+
+Simplex Algorithmus - der Primale Simplex kompakt erklärt (Operations Research)
+https://www.youtube.com/watch?v=avZN0vSuBdg
