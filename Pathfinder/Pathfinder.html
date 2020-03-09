@@ -16,6 +16,8 @@
 			height: 25
 		}
 		
+		
+		
 		// losuj przeszkody
 		var generateRandomElement = function()
 		{
@@ -56,19 +58,128 @@
 					
 					if(tileMap[col] != null && tileMap[col][row] != null)
 					{
+						if(tileMap[col][row]==0)
+						{
+							ctx.fillStyle = '#CC0000';
+							
+						}
+						else
+						{
+							ctx.fillStyle = '#2d9f23';
+						}
+						
 						ctx.fillRect(tilePositionX, tilePositionY, tile.width, tile.height);
+						
 					}
 				}
 			}
 			
 		}
 		
+		function Node(src,dist)
+		{
+			this.x = src.x;
+			this.y = src.y;
+			this.dist = dist;
+		}
+		
+		var NodeList = function()
+		{
+			this.list = [];
+		}
+		
+		NodeList.prototype.add = function(element)
+		{
+			this.list.push(element);
+			
+
+		}
+		
+		NodeList.prototype.sort = function(element)
+		{
+			this.list.sort(function(a,b) {
+					return a[2] - b[2];
+			});
+		}
+		
+		NodeList.prototype.get = function(pos)
+		{
+			return this.list[pos];
+		}
+		
+		NodeList.prototype.size = function(pos)
+		{
+			return this.list.length;
+		}
+		
+		function getDistance(src, dest)
+		{
+			return Math.abs(src.x - dest.x) + Math.abs(src.y - dest.y);
+		}
+		
+		function drawTileRed(col,row)
+		{
+			tileMap[col] = [];
+			tileMap[col][row] = 0;
+		}
+		
+		var neighboursList = new NodeList();
+		
+		
+		function findNextNode(src, dest)
+		{
+			this.currentNode = new Node(src);
+			this.destinationNode = new Node(dest);
+			// szukam nastepnego
+			
+			
+			neighboursList.add({x: this.currentNode.x+1, y: this.currentNode.y});
+			neighboursList.add({x: this.currentNode.x+1,y: this.currentNode.y+1});
+			neighboursList.add({x: this.currentNode.x+1,y: this.currentNode.y-1});
+
+			neighboursList.add({x: this.currentNode.x,y: this.currentNode.y+1});
+			neighboursList.add({x: this.currentNode.x,y: this.currentNode.y-1});
+
+			neighboursList.add({x: this.currentNode.x-1,y: this.currentNode.y+1});
+			neighboursList.add({x: this.currentNode.x-1,y: this.currentNode.y});
+			neighboursList.add({x: this.currentNode.x-1,y: this.currentNode.y-1});
+			
+			for(var i = 0; i < neighboursList.size(); i++)
+			{
+				var distCounted = getDistance(neighboursList.get(i), dest)
+				console.log("wezel: " + i + " obliczony dystans: " +distCounted);
+				neighboursList.get(i).dist = distCounted;
+				
+			}
+			neighboursList.sort();
+			
+			for(var i = 0; i < neighboursList.size(); i++)
+			{
+				
+				var curr = neighboursList.get(i);
+				console.log("wezel: " + i + " obliczony dystans: " +curr.dist);
+			}
+			console.log('wybieram: ' +neighboursList.get(0).dist);
+		}
+		
+		// start program
+		
+		for(var i=1; i < 25; i++)
+		{
+			
+				drawTileRed(i,i)
+			
+		}
+				
 		for(var k=0; k < 100; k++)
 		{
 			generateRandomElement();
 		}
 		
+
+		
 		renderGrid(tile);
+		findNextNode({x:1,y:1},{x:24,y:24});
 	}
 	</script>
 </head>
