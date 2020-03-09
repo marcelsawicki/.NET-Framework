@@ -151,15 +151,19 @@
 				neighboursList.get(i).dist = distCounted;
 				
 			}
-			neighboursList.sort();
 			
+			var result = neighboursList.get(0);
 			for(var i = 0; i < neighboursList.size(); i++)
 			{
 				
 				var curr = neighboursList.get(i);
-				console.log("wezel: " + i + " obliczony dystans: " +curr.dist);
+				if(result.dist>curr.dist)
+				{
+					result=neighboursList.get(i);
+				}
+				console.log("wezel: " + i + " obliczony dystans: " +result.dist );
 			}
-			console.log('wybieram: ' +neighboursList.get(0).dist);
+			console.log('wybieram: ' +result.dist+ "(x, y)= "+result.x+', '+result.y);
 		}
 		
 		// start program
