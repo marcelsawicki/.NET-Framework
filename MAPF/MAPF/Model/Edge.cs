@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace MAPF.Model
 {
-	class Graph
+	class Edge
 	{
-		public int NVerticies { get; set; }
-		public int NEdges { get; set; }
-		public List<Edge> Edges { get; set; }
 	}
 }
