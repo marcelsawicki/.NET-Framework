@@ -1,0 +1,6 @@
+JPS:
+
+https://www.codeproject.com/Articles/632424/EpPathFinding-cs-A-Fast-Path-Finding-Algorithm-Jum
+
+AStar, Dijkstra:
+https://www.codeproject.com/Articles/1221034/Pathfinding-Algorithms-in-Csharp
