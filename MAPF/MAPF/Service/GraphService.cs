@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MAPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MAPF.Service
 {
     class GraphService
     {
-        public static void ShowEdgesNumber(Graph graph)
+        public static void ShowEdgesNumber(Model.Graph graph)
         {
             System.Console.WriteLine("Liczba krawedzi grafu: " + graph.NEdges.ToString());
         }
