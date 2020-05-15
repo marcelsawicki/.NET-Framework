@@ -21,8 +21,8 @@ namespace MAPF
 		private void f1_paint(object sender, PaintEventArgs e)
 		{
 			Graphics g = e.Graphics;
-			g.DrawString("Hello C#", new Font("Verdana", 20), new SolidBrush(Color.Tomato), 40, 40);
-			g.DrawRectangle(new Pen(Color.Pink, 3), 20, 20, 150, 100);
+			g.DrawString("Multi-agent Path Finding", new Font("Verdana", 20), new SolidBrush(Color.DarkGreen), 40, 40);
+			g.DrawRectangle(new Pen(Color.Pink, 3), 20, 20, 450, 100);
 		}
 	}
 }
