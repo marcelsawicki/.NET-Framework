@@ -8,7 +8,7 @@ namespace MAPF.Model
 {
 	public class Node
 	{
-		public Node(Node parentNode, Src src)
+		public Node(Node parentNode, Point src)
 		{
 			this.ParentNode = parentNode;
 			this.X = src.X;
@@ -24,5 +24,6 @@ namespace MAPF.Model
 		public int F { get; set; }
 		public int G { get; set; }
 		public int H { get; set; }
+		public bool Visited { get; set; }
 	}
 }

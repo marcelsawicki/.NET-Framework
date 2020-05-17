@@ -129,7 +129,13 @@ namespace MAPF
 		{
 			// A Star
 			AStar astar = new AStar();
-			List<Node> path = astar.SearchAstar(this.tileMap, 1, 10);
+			Model.Point src = new Model.Point();
+			src.X = 1;
+			src.Y = 1;
+			Model.Point dest = new Model.Point();
+			dest.X = 100;
+			dest.Y = 100;
+			List<Node> path = astar.SearchAstar(this.tileMap, src, dest, 100, 100);
 
 			foreach (var p in path)
 			{

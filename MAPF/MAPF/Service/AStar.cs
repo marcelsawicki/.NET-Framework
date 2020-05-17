@@ -9,21 +9,66 @@ namespace MAPF.Service
 {
 	public class AStar
 	{
-		public List<Node> SearchAstar(int[,] tileMap, int src, int dest)
+		public List<Node> SearchAstar(int[,] tileMap, Point src, Point dest, int gridCols, int gridRows)
 		{
 			List<Node> path = new List<Node>();
-			Src src1 = new Src();
-			src1.X = 1;
-			src1.Y = 1;
-			Node node1 = new Node(null,src1);
+			List<Node> closeList = new List<Node>();
+			List<Node> openList = new List<Node>();
 
-			Src src2 = new Src();
-			src2.X = 2;
-			src2.Y = 2;
-			Node node2 = new Node(node1, src2);
+			Node currentNode = null;
 
-			path.Add(node1);
-			path.Add(node2);
+			Point srcSrc = new Point();
+			srcSrc.X = 1;
+			srcSrc.Y = 1;
+			Node nodeSrc = new Node(null,srcSrc);
+
+			openList.Add(nodeSrc);
+
+			while (openList.Count > 0)
+			{
+				currentNode = openList.ElementAt(0);
+				currentNode.Visited = true;
+
+				if (currentNode.X == dest.X && currentNode.Y == dest.Y)
+				{
+					// targed reached
+					break;
+				}
+
+				closeList.Add(currentNode);
+				openList.RemoveAt(0);
+				Point nstart = new Point();
+				nstart.X = currentNode.X - 1 >= 0 ? currentNode.X - 1 : 0;
+				nstart.Y = currentNode.Y - 1 >= 0 ? currentNode.Y - 1 : 0;
+
+
+				Point nstop = new Point();
+				nstop.X = currentNode.X + 1 >= 0 ? currentNode.X + 1 : gridCols;
+				nstop.Y = currentNode.Y + 1 >= 0 ? currentNode.Y + 1 : gridRows;
+
+				// check eight neighbours
+
+				for (int col = nstart.X; col <= nstop.X; col++)
+				{
+					for (int row = nstart.Y; row <= nstop.Y; row++)
+					{
+						if (tileMap[col,row] == 1)
+						{
+							continue;
+						}
+
+						var n = new Node(currentNode, new Point(col, row));
+						n.G = currentNode.G + 1;
+					}
+
+				}
+
+
+			}
+
+			
+			
+			
 
 			return path;
 		}
