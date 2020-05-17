@@ -1,4 +1,5 @@
 ﻿using MAPF.Model;
+using MAPF.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,11 @@ namespace MAPF
 						SolidBrush blueBrush = new SolidBrush(Color.Blue);
 						g.FillRectangle(blueBrush, rect1);
 					}
+					else if (tileMap[col, row] == 2)
+					{
+						SolidBrush redBrush = new SolidBrush(Color.Red);
+						g.FillRectangle(redBrush, rect1);
+					}
 				}
 
 			}
@@ -86,7 +92,7 @@ namespace MAPF
 
 				this.tileMap[randX, randY] = 1;
 			}
-			
+			this.tileMap[1, 1] = 2;
 			Refresh();
 
 		}
@@ -106,6 +112,30 @@ namespace MAPF
 
 			Refresh();
 			
+		}
+
+		private void button6_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+
+		}
+
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			// A Star
+			AStar astar = new AStar();
+			List<Node> path = astar.SearchAstar(this.tileMap, 1, 10);
+
+			foreach (var p in path)
+			{
+				this.tileMap[p.X, p.Y] = 2;
+			}
+			Refresh();
 		}
 	}
 }

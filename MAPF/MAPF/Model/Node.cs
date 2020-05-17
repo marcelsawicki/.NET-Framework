@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MAPF.Model
 {
-	class Node
+	public class Node
 	{
 		public Node(Node parentNode, Src src)
 		{
