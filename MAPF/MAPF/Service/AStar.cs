@@ -17,16 +17,15 @@ namespace MAPF.Service
 
 			Node currentNode = null;
 
-			Point srcSrc = new Point();
-			srcSrc.X = 1;
-			srcSrc.Y = 1;
+			Point srcSrc = new Point(1,1);
+			
 			Node nodeSrc = new Node(null,srcSrc);
 
 			openList.Add(nodeSrc);
 
 			while (openList.Count > 0)
 			{
-				currentNode = openList.ElementAt(0);
+				currentNode = openList.OrderBy(x => x.F).ElementAt(0); //openList.ElementAt(0);
 				currentNode.Visited = true;
 
 				if (currentNode.X == dest.X && currentNode.Y == dest.Y)
@@ -43,8 +42,8 @@ namespace MAPF.Service
 
 
 				Point nstop = new Point();
-				nstop.X = currentNode.X + 1 >= 0 ? currentNode.X + 1 : gridCols;
-				nstop.Y = currentNode.Y + 1 >= 0 ? currentNode.Y + 1 : gridRows;
+				nstop.X = currentNode.X + 1 <= gridCols ? currentNode.X + 1 : gridCols;
+				nstop.Y = currentNode.Y + 1 <= gridRows ? currentNode.Y + 1 : gridRows;
 
 				// check eight neighbours
 
@@ -57,8 +56,25 @@ namespace MAPF.Service
 							continue;
 						}
 
+						var dd = openList.Where(x => x.X == col && x.Y == row).FirstOrDefault();
+
+						if (dd != null)
+						{
+							continue;
+						}
+
+						var cc = openList.Where(x => x.X == col && x.Y == row).FirstOrDefault();
+						if (cc != null)
+						{
+							continue;
+						}
+
 						var n = new Node(currentNode, new Point(col, row));
 						n.G = currentNode.G + 1;
+						n.H = getDistance(n, dest);
+						n.F = n.G + n.H;
+
+						openList.Add(n);
 					}
 
 				}
@@ -71,6 +87,13 @@ namespace MAPF.Service
 			
 
 			return path;
+		}
+
+		private double getDistance(Node n, Point dest)
+		{
+			double x1 = (double)(dest.X-n.X);
+			double y1 = (double)(dest.Y - n.Y);
+			return Math.Sqrt(Math.Pow(x1, 2) + Math.Pow(y1, 2));
 		}
 	}
 }

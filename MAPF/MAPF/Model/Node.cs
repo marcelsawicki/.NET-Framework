@@ -21,9 +21,9 @@ namespace MAPF.Model
 		public Node ParentNode { get; set; }
 		public int X { get; set; }
 		public int Y { get; set; }
-		public int F { get; set; }
+		public double F { get; set; }
 		public int G { get; set; }
-		public int H { get; set; }
+		public double H { get; set; }
 		public bool Visited { get; set; }
 	}
 }
