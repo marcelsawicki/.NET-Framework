@@ -56,7 +56,7 @@ namespace MAPF.Service
 							continue;
 						}
 
-						var dd = openList.Where(x => x.X == col && x.Y == row).FirstOrDefault();
+						var dd = closeList.Where(x => x.X == col && x.Y == row).FirstOrDefault();
 
 						if (dd != null)
 						{
@@ -69,6 +69,9 @@ namespace MAPF.Service
 							continue;
 						}
 
+
+						// Not present in any lists, keep going.
+
 						var n = new Node(currentNode, new Point(col, row));
 						n.G = currentNode.G + 1;
 						n.H = getDistance(n, dest);
@@ -78,13 +81,13 @@ namespace MAPF.Service
 					}
 
 				}
-
-
 			}
 
-			
-			
-			
+			while (currentNode.ParentNode != null)
+			{
+				path.Add(currentNode);
+				currentNode = currentNode.ParentNode;
+			}
 
 			return path;
 		}
@@ -92,8 +95,8 @@ namespace MAPF.Service
 		private double getDistance(Node n, Point dest)
 		{
 			double x1 = (double)(dest.X-n.X);
-			double y1 = (double)(dest.Y - n.Y);
-			return Math.Sqrt(Math.Pow(x1, 2) + Math.Pow(y1, 2));
+			double y1 = (double)(dest.Y-n.Y);
+			return Math.Sqrt(x1*x1 + y1*y1);
 		}
 	}
 }
