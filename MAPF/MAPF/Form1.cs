@@ -116,7 +116,20 @@ namespace MAPF
 
 		private void button6_Click(object sender, EventArgs e)
 		{
+			// JPS
+			JPS jps = new JPS();
+			Model.Point src = new Model.Point(1, 1);
 
+			Model.Point dest = new Model.Point(20, 1);
+			this.tileMap[dest.X, dest.Y] = 0;
+
+			List<Node> path = jps.Search(this.tileMap, src, dest, 99, 99);
+
+			foreach (var p in path)
+			{
+				this.tileMap[p.X, p.Y] = 2;
+			}
+			Refresh();
 		}
 
 		private void button5_Click(object sender, EventArgs e)
@@ -134,7 +147,7 @@ namespace MAPF
 			Model.Point dest = new Model.Point(71,55);
 			this.tileMap[dest.X, dest.Y] = 0;
 			
-			List<Node> path = astar.SearchAstar(this.tileMap, src, dest, 99, 99);
+			List<Node> path = astar.Search(this.tileMap, src, dest, 99, 99);
 
 			foreach (var p in path)
 			{

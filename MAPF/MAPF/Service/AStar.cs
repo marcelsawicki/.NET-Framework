@@ -1,4 +1,5 @@
-﻿using MAPF.Model;
+﻿using MAPF.Interface;
+using MAPF.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MAPF.Service
 {
-	public class AStar
+	public class AStar : ISearch
 	{
-		public List<Node> SearchAstar(int[,] tileMap, Point src, Point dest, int gridCols, int gridRows)
+		public List<Node> Search(int[,] tileMap, Point src, Point dest, int gridCols, int gridRows)
 		{
 			List<Node> path = new List<Node>();
 			List<Node> closeList = new List<Node>();
