@@ -48,6 +48,13 @@ namespace MAPF
 			InitializeComponent();
 			this.DoubleBuffered = true;
 			InitMenus();
+			this.Click += new EventHandler(mPathPoint_Click);
+		}
+
+		private void mPathPoint_Click(object sender, EventArgs e)
+		{
+			MouseEventArgs e2 = (MouseEventArgs)e;
+			MessageBox.Show(string.Format("X: {0} Y: {1}", e2.X, e2.Y));
 		}
 
 		void InitMenus()
