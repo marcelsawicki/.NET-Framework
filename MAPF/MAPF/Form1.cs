@@ -54,30 +54,46 @@ namespace MAPF
 		{
 			// MainMenu
 			MainMenu mainMenu = new MainMenu();
-			MenuItem mPlik = new MenuItem("Plik");
+			MenuItem mFile = new MenuItem("File");
+			MenuItem mHelp = new MenuItem("Help");
 
-			MenuItem mPlikWczytaj = new MenuItem("Wczytaj");
-			MenuItem mPlikZakoncz = new MenuItem("Zakończ");
+			MenuItem mFileLoad = new MenuItem("Load map");
+			MenuItem mFileSave = new MenuItem("Save map");
+			MenuItem mFileExit = new MenuItem("Exit");
 
-			mPlikWczytaj.Click += new EventHandler(mPlikWczytaj_Click);
-			mPlikZakoncz.Click += new EventHandler(mPlikZakoncz_Click);
-			mPlik.MenuItems.Add(mPlikWczytaj);
-			mPlik.MenuItems.Add(mPlikZakoncz);
-			mainMenu.MenuItems.Add(mPlik);
+			mFileLoad.Click += new EventHandler(mPlikLoad_Click);
+			mFileSave.Click += new EventHandler(mPlikSave_Click);
+			mFileExit.Click += new EventHandler(mPlikExit_Click);
+
+
+			MenuItem mHelpAbout = new MenuItem("About");
+
+			mFile.MenuItems.Add(mFileLoad);
+			mFile.MenuItems.Add(mFileSave);
+			mFile.MenuItems.Add(mFileExit);
+
+			mHelp.MenuItems.Add(mHelpAbout);
+
+
+			mainMenu.MenuItems.Add(mFile);
+			mainMenu.MenuItems.Add(mHelp);
 			this.Menu = mainMenu;
-			// ContextMenu
-			ContextMenu cMenu = new ContextMenu();
-			MenuItem mZakoncz = new MenuItem("Zakończ");
-			cMenu.MenuItems.Add(mZakoncz);
-			//this.tb.ContextMenu = cMenu;
+
 		}
 
-		void mPlikZakoncz_Click(object sender, EventArgs e)
+		void mPlikExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
-		void mPlikWczytaj_Click(object sender, EventArgs e)
+		void mPlikLoad_Click(object sender, EventArgs e)
+		{
+			CSecondaryForm f = new CSecondaryForm();
+			f.ShowDialog();
+
+		}
+
+		void mPlikSave_Click(object sender, EventArgs e)
 		{
 			CSecondaryForm f = new CSecondaryForm();
 			f.ShowDialog();
