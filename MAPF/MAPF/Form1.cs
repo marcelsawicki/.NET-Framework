@@ -12,6 +12,14 @@ using System.Windows.Forms;
 
 namespace MAPF
 {
+	public class CSecondaryForm : Form
+	{
+		public CSecondaryForm()
+		{
+			this.Text = "Okno dialogowe";
+		}
+	}
+
 	public partial class Form1 : Form
 	{
 		public string text1 = "Multi-agent Path Finding";
@@ -39,6 +47,41 @@ namespace MAPF
 			//this.Paint += this.OnPaint;
 			InitializeComponent();
 			this.DoubleBuffered = true;
+			InitMenus();
+		}
+
+		void InitMenus()
+		{
+			// MainMenu
+			MainMenu mainMenu = new MainMenu();
+			MenuItem mPlik = new MenuItem("Plik");
+
+			MenuItem mPlikWczytaj = new MenuItem("Wczytaj");
+			MenuItem mPlikZakoncz = new MenuItem("Zakończ");
+
+			mPlikWczytaj.Click += new EventHandler(mPlikWczytaj_Click);
+			mPlikZakoncz.Click += new EventHandler(mPlikZakoncz_Click);
+			mPlik.MenuItems.Add(mPlikWczytaj);
+			mPlik.MenuItems.Add(mPlikZakoncz);
+			mainMenu.MenuItems.Add(mPlik);
+			this.Menu = mainMenu;
+			// ContextMenu
+			ContextMenu cMenu = new ContextMenu();
+			MenuItem mZakoncz = new MenuItem("Zakończ");
+			cMenu.MenuItems.Add(mZakoncz);
+			//this.tb.ContextMenu = cMenu;
+		}
+
+		void mPlikZakoncz_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		void mPlikWczytaj_Click(object sender, EventArgs e)
+		{
+			CSecondaryForm f = new CSecondaryForm();
+			f.ShowDialog();
+
 		}
 		protected override void OnPaint(PaintEventArgs e)
 		{

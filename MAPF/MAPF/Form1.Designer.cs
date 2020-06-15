@@ -37,9 +37,10 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(688, 134);
+			this.button1.Location = new System.Drawing.Point(867, 239);
+			this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.Size = new System.Drawing.Size(100, 28);
 			this.button1.TabIndex = 0;
 			this.button1.Text = "Fill";
 			this.button1.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(688, 93);
+			this.button2.Location = new System.Drawing.Point(867, 203);
+			this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.Size = new System.Drawing.Size(100, 28);
 			this.button2.TabIndex = 1;
 			this.button2.Text = "Clear";
 			this.button2.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(696, 178);
+			this.button3.Location = new System.Drawing.Point(867, 275);
+			this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
+			this.button3.Size = new System.Drawing.Size(100, 28);
 			this.button3.TabIndex = 2;
 			this.button3.Text = "A Star";
 			this.button3.UseVisualStyleBackColor = true;
@@ -67,9 +70,10 @@
 			// 
 			// button5
 			// 
-			this.button5.Location = new System.Drawing.Point(696, 236);
+			this.button5.Location = new System.Drawing.Point(867, 311);
+			this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(75, 23);
+			this.button5.Size = new System.Drawing.Size(100, 28);
 			this.button5.TabIndex = 4;
 			this.button5.Text = "Dijkstra";
 			this.button5.UseVisualStyleBackColor = true;
@@ -77,24 +81,26 @@
 			// 
 			// button6
 			// 
-			this.button6.Location = new System.Drawing.Point(650, 296);
+			this.button6.Location = new System.Drawing.Point(867, 347);
+			this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.button6.Name = "button6";
-			this.button6.Size = new System.Drawing.Size(121, 23);
+			this.button6.Size = new System.Drawing.Size(100, 28);
 			this.button6.TabIndex = 5;
-			this.button6.Text = "Jump Point Search";
+			this.button6.Text = "JPS";
 			this.button6.UseVisualStyleBackColor = true;
 			this.button6.Click += new System.EventHandler(this.button6_Click);
 			// 
 			// Form1
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 561);
+			this.ClientSize = new System.Drawing.Size(1045, 690);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.button5);
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "Form1";
 			this.Text = "MAPF";
 			this.ResumeLayout(false);
