@@ -76,6 +76,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AStar.cs" />
+    <Compile Include="Service\BFS.cs" />
+    <Compile Include="Service\DFS.cs" />
     <Compile Include="Service\Dijkstra.cs" />
     <Compile Include="Service\Draw.cs" />
     <Compile Include="Service\GraphReader.cs" />

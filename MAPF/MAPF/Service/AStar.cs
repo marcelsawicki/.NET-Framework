@@ -36,7 +36,7 @@ namespace MAPF.Service
 				}
 
 				closeList.Add(currentNode);
-				openList.RemoveAt(0);
+				openList.RemoveAt(openList.IndexOf(currentNode));
 				Point nstart = new Point();
 				nstart.X = currentNode.X - 1 >= 0 ? currentNode.X - 1 : 0;
 				nstart.Y = currentNode.Y - 1 >= 0 ? currentNode.Y - 1 : 0;
