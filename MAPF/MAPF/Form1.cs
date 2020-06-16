@@ -22,7 +22,7 @@ namespace MAPF
 
 	public partial class Form1 : Form
 	{
-		public string text1 = "Multi-agent Path Finding";
+		public string text1 = "Pathfinder";
 		public int xx1 = 100;
 		public int yy2 = 100;
 		List<Node> NodeList = new List<Node>();
@@ -74,6 +74,7 @@ namespace MAPF
 
 
 			MenuItem mHelpAbout = new MenuItem("About");
+			mHelpAbout.Click += new EventHandler(mPlikAbout_Click);
 
 			mFile.MenuItems.Add(mFileLoad);
 			mFile.MenuItems.Add(mFileSave);
@@ -86,6 +87,12 @@ namespace MAPF
 			mainMenu.MenuItems.Add(mHelp);
 			this.Menu = mainMenu;
 
+		}
+
+		private void mPlikAbout_Click(object sender, EventArgs e)
+		{
+			AboutBox1 a = new AboutBox1();
+			a.ShowDialog();
 		}
 
 		void mPlikExit_Click(object sender, EventArgs e)
