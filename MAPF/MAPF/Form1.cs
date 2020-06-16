@@ -22,6 +22,7 @@ namespace MAPF
 		int[,] tileMap = new int[100, 100];
 
 		public Model.Point src = new Model.Point();
+		public string filename;
 
 
 		private static readonly Random random = new Random();
@@ -103,8 +104,9 @@ namespace MAPF
 
 		void mPlikLoad_Click(object sender, EventArgs e)
 		{
-			CSecondaryForm f = new CSecondaryForm();
-			f.ShowDialog();
+
+			openFileDialog1.ShowDialog();
+			this.filename = openFileDialog1.FileName;
 
 		}
 
@@ -239,7 +241,7 @@ namespace MAPF
 		{
 			Color pixelColor;
 			// Create a Bitmap object from an image file.
-			Bitmap myBitmap = new Bitmap(@"D:\Maze1.png");
+			Bitmap myBitmap = new Bitmap(this.filename);
 			for (int g = 1; g < 99; g++)
 			{
 				for (int k = 1; k < 99; k++)

@@ -36,6 +36,7 @@
 			this.button6 = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -106,11 +107,15 @@
 			// 
 			this.button4.Location = new System.Drawing.Point(862, 400);
 			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(62, 67);
+			this.button4.Size = new System.Drawing.Size(151, 34);
 			this.button4.TabIndex = 7;
-			this.button4.Text = "button4";
+			this.button4.Text = "Load from file";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
+			// 
+			// openFileDialog1
+			// 
+			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
 			// Form1
 			// 
@@ -142,6 +147,7 @@
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 	}
 }
 
