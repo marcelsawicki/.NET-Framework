@@ -222,17 +222,37 @@ namespace MAPF
 			{
 				//Model.Point src = new Model.Point(1, 1);
 			}
-			src = this.src;
 
-			Model.Point dest = new Model.Point(71,55);
+			Model.Point dest = new Model.Point(24,62);
 			this.tileMap[dest.X, dest.Y] = 0;
 			
-			List<Node> path = astar.Search(this.tileMap, src, dest, 99, 99);
+			List<Node> path = astar.Search(this.tileMap, this.src, dest, 99, 99);
 
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
 			}
+			Refresh();
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			Color pixelColor;
+			// Create a Bitmap object from an image file.
+			Bitmap myBitmap = new Bitmap(@"D:\Maze1.png");
+			for (int g = 1; g < 99; g++)
+			{
+				for (int k = 1; k < 99; k++)
+				{
+					pixelColor = myBitmap.GetPixel(g, k);
+					if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
+					{
+						this.tileMap[g, k] = 1;
+					}
+				}
+
+			}
+
 			Refresh();
 		}
 	}
