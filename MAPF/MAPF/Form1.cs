@@ -12,13 +12,6 @@ using System.Windows.Forms;
 
 namespace MAPF
 {
-	public class CSecondaryForm : Form
-	{
-		public CSecondaryForm()
-		{
-			this.Text = "Okno dialogowe";
-		}
-	}
 
 	public partial class Form1 : Form
 	{
@@ -27,6 +20,8 @@ namespace MAPF
 		public int yy2 = 100;
 		List<Node> NodeList = new List<Node>();
 		int[,] tileMap = new int[100, 100];
+
+		public Model.Point src = new Model.Point();
 
 
 		private static readonly Random random = new Random();
@@ -54,7 +49,13 @@ namespace MAPF
 		private void mPathPoint_Click(object sender, EventArgs e)
 		{
 			MouseEventArgs e2 = (MouseEventArgs)e;
-			MessageBox.Show(string.Format("X: {0} Y: {1}", e2.X, e2.Y));
+			int convX = e2.X / 5;
+			int convY = e2.Y / 5;
+			this.src.X = convX;
+			this.src.Y = convY;
+
+			label1.Text = string.Format("X: {0} Y: {1}", convX, convY);
+			MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
 		}
 
 		void InitMenus()
@@ -215,8 +216,14 @@ namespace MAPF
 		{
 			// A Star
 			AStar astar = new AStar();
-			Model.Point src = new Model.Point(1,1);
-			
+			//Model.Point src = new Model.Point(1,1);
+
+			if (this.src == null)
+			{
+				//Model.Point src = new Model.Point(1, 1);
+			}
+			src = this.src;
+
 			Model.Point dest = new Model.Point(71,55);
 			this.tileMap[dest.X, dest.Y] = 0;
 			

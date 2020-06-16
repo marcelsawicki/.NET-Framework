@@ -18,7 +18,7 @@ namespace MAPF.Service
 
 			Node currentNode = null;
 
-			Point srcSrc = new Point(1,1);
+			Point srcSrc = new Point(src.X, src.Y);
 			
 			Node nodeSrc = new Node(null,srcSrc);
 
