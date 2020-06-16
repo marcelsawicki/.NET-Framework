@@ -37,25 +37,27 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+			this.button7 = new System.Windows.Forms.Button();
+			this.button8 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(867, 239);
+			this.button1.Location = new System.Drawing.Point(862, 466);
 			this.button1.Margin = new System.Windows.Forms.Padding(4);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(100, 28);
+			this.button1.Size = new System.Drawing.Size(158, 29);
 			this.button1.TabIndex = 0;
-			this.button1.Text = "Fill";
+			this.button1.Text = "Random Obstacles";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(867, 203);
+			this.button2.Location = new System.Drawing.Point(862, 503);
 			this.button2.Margin = new System.Windows.Forms.Padding(4);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(100, 28);
+			this.button2.Size = new System.Drawing.Size(158, 28);
 			this.button2.TabIndex = 1;
 			this.button2.Text = "Clear";
 			this.button2.UseVisualStyleBackColor = true;
@@ -74,7 +76,7 @@
 			// 
 			// button5
 			// 
-			this.button5.Location = new System.Drawing.Point(867, 311);
+			this.button5.Location = new System.Drawing.Point(867, 239);
 			this.button5.Margin = new System.Windows.Forms.Padding(4);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(100, 28);
@@ -85,7 +87,7 @@
 			// 
 			// button6
 			// 
-			this.button6.Location = new System.Drawing.Point(867, 347);
+			this.button6.Location = new System.Drawing.Point(867, 311);
 			this.button6.Margin = new System.Windows.Forms.Padding(4);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(100, 28);
@@ -97,7 +99,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(827, 34);
+			this.label1.Location = new System.Drawing.Point(864, 66);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(46, 17);
 			this.label1.TabIndex = 6;
@@ -105,9 +107,9 @@
 			// 
 			// button4
 			// 
-			this.button4.Location = new System.Drawing.Point(862, 400);
+			this.button4.Location = new System.Drawing.Point(862, 425);
 			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(151, 34);
+			this.button4.Size = new System.Drawing.Size(158, 34);
 			this.button4.TabIndex = 7;
 			this.button4.Text = "Load from file";
 			this.button4.UseVisualStyleBackColor = true;
@@ -117,11 +119,33 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
+			// button7
+			// 
+			this.button7.Location = new System.Drawing.Point(867, 200);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(100, 32);
+			this.button7.TabIndex = 8;
+			this.button7.Text = "DFS";
+			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.button7_Click);
+			// 
+			// button8
+			// 
+			this.button8.Location = new System.Drawing.Point(867, 165);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(100, 29);
+			this.button8.TabIndex = 9;
+			this.button8.Text = "BFS";
+			this.button8.UseVisualStyleBackColor = true;
+			this.button8.Click += new System.EventHandler(this.button8_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1045, 690);
+			this.Controls.Add(this.button8);
+			this.Controls.Add(this.button7);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button6);
@@ -148,6 +172,8 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
+		private System.Windows.Forms.Button button7;
+		private System.Windows.Forms.Button button8;
 	}
 }
 
