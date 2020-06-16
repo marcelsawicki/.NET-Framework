@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace MAPF
 		int[,] tileMap = new int[100, 100];
 
 		public Model.Point src = new Model.Point();
+		public Model.Point goal = new Model.Point(24, 62);
 		public string filename;
 
 
@@ -45,6 +47,8 @@ namespace MAPF
 			this.DoubleBuffered = true;
 			InitMenus();
 			this.Click += new EventHandler(mPathPoint_Click);
+			label4.Text = string.Format("X: {0} Y: {1}", this.goal.X, this.goal.Y);
+
 		}
 
 		private void mPathPoint_Click(object sender, EventArgs e)
@@ -88,7 +92,6 @@ namespace MAPF
 			mainMenu.MenuItems.Add(mFile);
 			mainMenu.MenuItems.Add(mHelp);
 			this.Menu = mainMenu;
-
 		}
 
 		private void mPlikAbout_Click(object sender, EventArgs e)
@@ -226,11 +229,12 @@ namespace MAPF
 				//Model.Point src = new Model.Point(1, 1);
 			}
 
-			Model.Point dest = new Model.Point(24,62);
+			Model.Point dest = this.goal;
 			this.tileMap[dest.X, dest.Y] = 0;
-			
+			var sw = Stopwatch.StartNew();
 			List<Node> path = astar.Search(this.tileMap, this.src, dest, 99, 99);
-
+			sw.Stop();
+			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
