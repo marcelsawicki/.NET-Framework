@@ -107,6 +107,7 @@ namespace MAPF
 
 			openFileDialog1.ShowDialog();
 			this.filename = openFileDialog1.FileName;
+			label6.Text = this.filename;
 
 		}
 
