@@ -58,8 +58,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface\ISearch.cs" />
-    <Compile Include="Model\Point.cs" />
     <Compile Include="Model\Grid.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Model\Tile.cs" />
@@ -74,7 +72,9 @@
     <Compile Include="Service\GraphReader.cs" />
     <Compile Include="Service\GraphService.cs" />
     <Compile Include="Service\GridService.cs" />
+    <Compile Include="Interface\ISearch.cs" />
     <Compile Include="Service\JPS.cs" />
+    <Compile Include="Model\Point.cs" />
     <Compile Include="Service\Roads.cs" />
     <Compile Include="Service\Vertices.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
