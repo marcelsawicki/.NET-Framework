@@ -272,5 +272,21 @@ namespace MAPF
 		{
 
 		}
+		// Dijkstra
+		private void button5_Click_1(object sender, EventArgs e)
+		{
+			// Dijkstra
+			Dijkstra dijkstra = new Dijkstra();
+
+			var sw = Stopwatch.StartNew();
+			List<Node> path = dijkstra.Search(this.tileMap, this.src, this.goal, 99, 99);
+			sw.Stop();
+			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			foreach (var p in path)
+			{
+				this.tileMap[p.X, p.Y] = 2;
+			}
+			Refresh();
+		}
 	}
 }
