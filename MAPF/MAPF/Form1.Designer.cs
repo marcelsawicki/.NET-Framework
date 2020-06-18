@@ -48,6 +48,7 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.button5 = new System.Windows.Forms.Button();
+			this.button6 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -74,12 +75,12 @@
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(862, 345);
+			this.button3.Location = new System.Drawing.Point(864, 292);
 			this.button3.Margin = new System.Windows.Forms.Padding(4);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(100, 28);
+			this.button3.Size = new System.Drawing.Size(153, 28);
 			this.button3.TabIndex = 2;
-			this.button3.Text = "Search";
+			this.button3.Text = "Search AStar";
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
@@ -221,7 +222,7 @@
 			// 
 			// button5
 			// 
-			this.button5.Location = new System.Drawing.Point(864, 381);
+			this.button5.Location = new System.Drawing.Point(862, 345);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(155, 31);
 			this.button5.TabIndex = 20;
@@ -229,11 +230,22 @@
 			this.button5.UseVisualStyleBackColor = true;
 			this.button5.Click += new System.EventHandler(this.button5_Click_1);
 			// 
+			// button6
+			// 
+			this.button6.Location = new System.Drawing.Point(864, 382);
+			this.button6.Name = "button6";
+			this.button6.Size = new System.Drawing.Size(153, 37);
+			this.button6.TabIndex = 21;
+			this.button6.Text = "Search BFS";
+			this.button6.UseVisualStyleBackColor = true;
+			this.button6.Click += new System.EventHandler(this.button6_Click_1);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1045, 690);
+			this.Controls.Add(this.button6);
 			this.Controls.Add(this.button5);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label7);
@@ -282,6 +294,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.Button button6;
 	}
 }
 

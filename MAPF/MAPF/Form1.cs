@@ -288,5 +288,21 @@ namespace MAPF
 			}
 			Refresh();
 		}
+
+		private void button6_Click_1(object sender, EventArgs e)
+		{
+			// BFS
+			BFS bfs = new BFS();
+
+			var sw = Stopwatch.StartNew();
+			List<Node> path = bfs.Search(this.tileMap, this.src, this.goal, 99, 99);
+			sw.Stop();
+			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			foreach (var p in path)
+			{
+				this.tileMap[p.X, p.Y] = 2;
+			}
+			Refresh();
+		}
 	}
 }
