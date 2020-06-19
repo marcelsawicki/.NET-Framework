@@ -35,11 +35,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.checkBox2 = new System.Windows.Forms.CheckBox();
-			this.checkBox3 = new System.Windows.Forms.CheckBox();
-			this.checkBox4 = new System.Windows.Forms.CheckBox();
-			this.checkBox5 = new System.Windows.Forms.CheckBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +44,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.button5 = new System.Windows.Forms.Button();
 			this.button6 = new System.Windows.Forms.Button();
+			this.button7 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -75,7 +71,7 @@
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(864, 292);
+			this.button3.Location = new System.Drawing.Point(864, 208);
 			this.button3.Margin = new System.Windows.Forms.Padding(4);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(153, 28);
@@ -106,56 +102,6 @@
 			// openFileDialog1
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
-			// 
-			// checkBox1
-			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(736, 107);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(57, 21);
-			this.checkBox1.TabIndex = 8;
-			this.checkBox1.Text = "DFS";
-			this.checkBox1.UseVisualStyleBackColor = true;
-			// 
-			// checkBox2
-			// 
-			this.checkBox2.AutoSize = true;
-			this.checkBox2.Location = new System.Drawing.Point(736, 134);
-			this.checkBox2.Name = "checkBox2";
-			this.checkBox2.Size = new System.Drawing.Size(56, 21);
-			this.checkBox2.TabIndex = 9;
-			this.checkBox2.Text = "BFS";
-			this.checkBox2.UseVisualStyleBackColor = true;
-			// 
-			// checkBox3
-			// 
-			this.checkBox3.AutoSize = true;
-			this.checkBox3.Location = new System.Drawing.Point(736, 161);
-			this.checkBox3.Name = "checkBox3";
-			this.checkBox3.Size = new System.Drawing.Size(77, 21);
-			this.checkBox3.TabIndex = 10;
-			this.checkBox3.Text = "Dijkstra";
-			this.checkBox3.UseVisualStyleBackColor = true;
-			// 
-			// checkBox4
-			// 
-			this.checkBox4.AutoSize = true;
-			this.checkBox4.Location = new System.Drawing.Point(736, 188);
-			this.checkBox4.Name = "checkBox4";
-			this.checkBox4.Size = new System.Drawing.Size(44, 21);
-			this.checkBox4.TabIndex = 11;
-			this.checkBox4.Text = "A*";
-			this.checkBox4.UseVisualStyleBackColor = true;
-			// 
-			// checkBox5
-			// 
-			this.checkBox5.AutoSize = true;
-			this.checkBox5.Location = new System.Drawing.Point(736, 215);
-			this.checkBox5.Name = "checkBox5";
-			this.checkBox5.Size = new System.Drawing.Size(55, 21);
-			this.checkBox5.TabIndex = 12;
-			this.checkBox5.Text = "JPS";
-			this.checkBox5.UseVisualStyleBackColor = true;
 			// 
 			// label2
 			// 
@@ -222,7 +168,7 @@
 			// 
 			// button5
 			// 
-			this.button5.Location = new System.Drawing.Point(862, 345);
+			this.button5.Location = new System.Drawing.Point(865, 243);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(155, 31);
 			this.button5.TabIndex = 20;
@@ -232,7 +178,7 @@
 			// 
 			// button6
 			// 
-			this.button6.Location = new System.Drawing.Point(864, 382);
+			this.button6.Location = new System.Drawing.Point(864, 280);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(153, 37);
 			this.button6.TabIndex = 21;
@@ -240,11 +186,22 @@
 			this.button6.UseVisualStyleBackColor = true;
 			this.button6.Click += new System.EventHandler(this.button6_Click_1);
 			// 
+			// button7
+			// 
+			this.button7.Location = new System.Drawing.Point(866, 343);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(153, 33);
+			this.button7.TabIndex = 22;
+			this.button7.Text = "Search DFS";
+			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.button7_Click_1);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1045, 690);
+			this.Controls.Add(this.button7);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.button5);
 			this.Controls.Add(this.label8);
@@ -254,11 +211,6 @@
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.checkBox5);
-			this.Controls.Add(this.checkBox4);
-			this.Controls.Add(this.checkBox3);
-			this.Controls.Add(this.checkBox2);
-			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button3);
@@ -281,11 +233,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.CheckBox checkBox2;
-		private System.Windows.Forms.CheckBox checkBox3;
-		private System.Windows.Forms.CheckBox checkBox4;
-		private System.Windows.Forms.CheckBox checkBox5;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
@@ -295,6 +242,7 @@
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button6;
+		private System.Windows.Forms.Button button7;
 	}
 }
 

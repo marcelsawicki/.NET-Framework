@@ -304,5 +304,21 @@ namespace MAPF
 			}
 			Refresh();
 		}
+
+		private void button7_Click_1(object sender, EventArgs e)
+		{
+			// DFS
+			DFS dfs = new DFS();
+
+			var sw = Stopwatch.StartNew();
+			List<Node> path = dfs.Search(this.tileMap, this.src, this.goal, 99, 99);
+			sw.Stop();
+			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			foreach (var p in path)
+			{
+				this.tileMap[p.X, p.Y] = 2;
+			}
+			Refresh();
+		}
 	}
 }

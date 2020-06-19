@@ -30,7 +30,7 @@ var aStar = function(tileMap, gridW, gridH, src, dest, createPositions) {
 		cols: gridH
 	}
 
-	this.openList.add(new Node(null, this.src));
+	this.openList.add(new Node(null, this.src, null));
 	
 	while (!this.openList.isEmpty()) {
 		this.currentNode = this.openList.get(0);
@@ -109,13 +109,14 @@ aStar.prototype.getDistance = function(src, dest) {
 	return Math.sqrt(Math.pow((dest.x - src.x),2)+Math.pow((dest.y - src.y),2));
 }
 
-function Node(parentNode, src) {
+function Node(parentNode, src, direction) {
 	this.parentNode = parentNode;
   this.x = src.x;
   this.y = src.y;
   this.F = 0;
   this.G = 0;
   this.H = 0;
+  this.direction = direction;
 }
 
 var NodeList = function(sorted, sortParam) {
