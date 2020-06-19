@@ -17,6 +17,7 @@ namespace MAPF.Service
 			Stack<Node> stack = new Stack<Node>();
 			List<Node> visited = new List<Node>();
 			List<Node> neighbours = new List<Node>();
+			bool tagetReached = false;
 
 			Node startNode = new Node(null, src);
 			startNode.G = 0;
@@ -25,42 +26,82 @@ namespace MAPF.Service
 			// find all neighbours
 			// get first neighbour and explore - find all neighbours, get one and visit
 
-			while (stack.Count > 0)
+			while (stack.Count > 0 && tagetReached!=true)
 			{
 				currentNode = stack.Pop();
-
+				Node parent = currentNode;
 				if (currentNode.X == dest.X && currentNode.Y == dest.Y)
 				{
 					// targed reached
+					tagetReached = true;
 					break;
 				}
 
-				neighbours = Explore(tileMap, visited, currentNode, stack, gridCols, gridRows, dest);
+				neighbours = FindNeighbours(tileMap, visited, currentNode, stack, gridCols, gridRows, dest);			
+
 				currentNode = neighbours.FirstOrDefault();
 				if (currentNode != null)
 				{
+					var zz = visited.Where(x => x.X == currentNode.X && x.Y == currentNode.Y).FirstOrDefault();
+					if (zz == null)
+					{
+
+						tagetReached = VisitNode(tileMap, visited, neighbours.FirstOrDefault(), stack, gridCols, gridRows, dest, parent);
+
+
+					}
+
 					stack.Push(currentNode);
 				}
-				
-			}
-			
 
+			}
+				
 			// path
+			// order by G
+
+			int cost = currentNode.G;
 
 			while (currentNode.ParentNode != null)
 			{
-				path.Add(currentNode);
-				currentNode = currentNode.ParentNode;
+				if (currentNode.G <= cost)
+				{
+					path.Add(currentNode);
+					currentNode = currentNode.ParentNode;
+				}
+				
 			}
 
 			return path;
 		}
 
-
-		private List<Node> Explore(int[,] tileMap, List<Node> visited, Node currentNode, Stack<Node> stack, int gridCols, int gridRows, Point dest)
+		private bool VisitNode(int[,] tileMap, List<Node> visited, Node currentNode, Stack<Node> stack, int gridCols, int gridRows, Point dest, Node parent)
 		{
+			currentNode.ParentNode = parent;
+			parent = currentNode;
+			List<Node> neighbours = new List<Node>();
 			visited.Add(currentNode);
+			stack.Push(currentNode);
+			neighbours = FindNeighbours(tileMap, visited, currentNode, stack, gridCols, gridRows, dest);
+			currentNode = neighbours.FirstOrDefault();
+			if (currentNode != null)
+			{
+				if (currentNode.X == dest.X && currentNode.Y == dest.Y)
+				{
+					// targed reached
+					return true;
+				}
+				var zz = visited.Where(x => x.X == currentNode.X && x.Y == currentNode.Y).FirstOrDefault();
+				if (zz != null)
+				{
+					VisitNode(tileMap, visited, neighbours.FirstOrDefault(), stack, gridCols, gridRows, dest, parent);
+				}
+			}
+			return false;
 			
+		}
+
+		private List<Node> FindNeighbours(int[,] tileMap, List<Node> visited, Node currentNode, Stack<Node> stack, int gridCols, int gridRows, Point dest)
+		{	
 			List<Node> neighbours = new List<Node>();
 
 			// find all neighbours, but get one and visit
@@ -90,7 +131,7 @@ namespace MAPF.Service
 						continue;
 					}
 
-					var n = new Node(currentNode, new Point(col, row));
+					var n = new Node(null, new Point(col, row));
 					n.G = currentNode.G + 1;
 					
 					neighbours.Add(n);
