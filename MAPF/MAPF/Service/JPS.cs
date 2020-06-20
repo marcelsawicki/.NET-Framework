@@ -20,6 +20,7 @@ namespace MAPF.Service
 			List<Node> path = new List<Node>();
 			List<Node> closeList = new List<Node>();
 			List<Node> openList = new List<Node>();
+			Stack<Node> successors = new Stack<Node>();
 			Point point;
 
 			Node currentNode = null;
@@ -76,30 +77,55 @@ namespace MAPF.Service
 							continue;
 						}
 
-						// try to jump
-						var dX = currentNode.X - col;
-						var dY = currentNode.Y - row;
-						var m = jump(currentNode.X, currentNode.Y, dX, dY, src, dest, tileMap);
+						//// try to jump
+						//var dX = currentNode.X - col;
+						//var dY = currentNode.Y - row;
+						//var m = jump(currentNode.X, currentNode.Y, dX, dY, src, dest, tileMap);
 
-						if (m != null)
-						{
-							point = new Point(m.X, m.Y);
-						}
-						else
-						{
-							point = new Point(col, row);
-						}
+						//if (m != null)
+						//{
+						//	point = new Point(m.X, m.Y);
+						//}
+						//else
+						//{
+						//	point = new Point(col, row);
+						//}
 
 						// Not present in any lists, keep going.
 
-						var n = new Node(currentNode, point);
+						var n = new Node(currentNode, new Point(row, col));
 						n.G = currentNode.G + 1;
 						n.H = getDistance(n, dest);
 						n.F = n.G + n.H;
 
-						openList.Add(n);
+						successors.Push(n);
 					}
 
+				}
+
+				// successors, prune
+				if (currentNode.ParentNode != null)
+				{
+					Node successor = successors.OrderByDescending(i => i.F).FirstOrDefault();
+
+					int dXsuccessor = currentNode.X - successor.X;
+					int dYsuccessor = currentNode.Y - successor.Y;
+
+					if (dXsuccessor != 0 && dYsuccessor != 0) // diagonal case
+					{
+
+					}
+					else // ortogonal case
+					{ 
+					}
+
+				}
+				else
+				{
+					for (int k = 0; k < successors.Count; k++)
+					{
+						openList.Add(successors.Pop());
+					}
 				}
 			}
 
@@ -112,8 +138,38 @@ namespace MAPF.Service
 			path.Add(currentNode);
 			return path;
 		}
+		private Node jump(Node currentNode, Node successor, Point src, Point dest, int[,] tileMap)
+		{
+			var dX = successor.X - currentNode.X;
+			var dY = successor.Y - currentNode.Y;
+			var nextX = successor.X;
+			var nextY = successor.Y;
 
-		private Point jump(int x, int y, int dX, int dY, Point src, Point dest, int[,] tileMap)
+			// check if walkable
+			if (tileMap[nextX, nextY] != 0)
+			{
+				return null;
+			}
+
+			//check if not outside the grid
+			if (nextX <= 0 || nextX >= this.gridCols) return null;
+			if (nextY <= 0 || nextY >= this.gridRows) return null;
+
+			// if node is the goal return it
+			if (nextX == dest.X && nextY == dest.Y)
+			{
+				return successor;
+			}
+
+			// check in horizontal and vertical directions for forced neighbors
+
+			// If forced neighbor was not found try next jump point
+			successor.X += dX;
+			successor.Y += dY;
+			return jump(currentNode, successor, src, dest, tileMap);
+		}
+
+		private Point jump2(int x, int y, int dX, int dY, Point src, Point dest, int[,] tileMap)
 		{
 			var nextX = x + dX;
 			var nextY = y + dY;
@@ -138,7 +194,7 @@ namespace MAPF.Service
 
 			// If forced neighbor was not found try next jump point
 
-			return jump(nextX, nextY, dX, dY, src, dest, tileMap);
+			return jump2(nextX, nextY, dX, dY, src, dest, tileMap);
 		}
 
 		private double getDistance(Node n, Point dest)
