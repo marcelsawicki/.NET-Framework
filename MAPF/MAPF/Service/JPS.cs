@@ -122,6 +122,13 @@ namespace MAPF.Service
 					var dY = successor.Y - currentNode.Y;
 					var nodeSuccessor = jump(currentNode.X, currentNode.Y, dX, dY, src, dest, tileMap);
 
+					if (nodeSuccessor != null)
+					{
+						var n = new Node(currentNode, nodeSuccessor);
+						n.G = currentNode.G + 1;
+						n.H = getDistance(n, dest);
+						openList.Add(n);
+					}
 				}
 				else
 				{
@@ -148,14 +155,14 @@ namespace MAPF.Service
 			var nextY = cY + dY;
 
 			// check if walkable
-			if (tileMap[nextX, nextY] != 0)
+			if (tileMap[nextX, nextY] == 1)
 			{
 				return null;
 			}
 
 			//check if not outside the grid
-			if (nextX <= 0 || nextX >= this.gridCols) return null;
-			if (nextY <= 0 || nextY >= this.gridRows) return null;
+			if (nextX <= 0 || nextX > this.gridCols) return null;
+			if (nextY <= 0 || nextY > this.gridRows) return null;
 
 			// if node is the goal return it
 			if (nextX == end.X && nextY == end.Y)
@@ -176,16 +183,16 @@ namespace MAPF.Service
 
 				if (point1.IsWalkable(tileMap) && !point2.IsWalkable(tileMap) || point3.IsWalkable(tileMap) && !point4.IsWalkable(tileMap))
 				{
-					return new Point(nextX, nextY);	
+					return new Point(cX, cX);	
 				}
 
 				// Check in horizontal and vertical directions for forced neighbors
 				// This is a special case for diagonal direction
-				if (jump(nextX, nextY, dX, 0, start, end, tileMap) != null ||
-					jump(nextX, nextY, 0, dY, start, end, tileMap) != null)
-				{
-					return new Point(nextX, nextY);
-				}
+				//if (jump(nextX, nextY, dX, 0, start, end, tileMap) != null ||
+				//	jump(nextX, nextY, 0, dY, start, end, tileMap) != null)
+				//{
+				//	return new Point(nextX, nextY);
+				//}
 			}
 			else
 			{
