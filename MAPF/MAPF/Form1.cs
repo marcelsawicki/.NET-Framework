@@ -23,8 +23,8 @@ namespace MAPF
 		List<Node> NodeList = new List<Node>();
 		int[,] tileMap = new int[100, 100];
 
-		public Model.Point src = new Model.Point();
-		public Model.Point goal = new Model.Point(24, 62);
+		public Model.Point src = new Model.Point(1, 1);
+		public Model.Point goal = new Model.Point(99,99);
 		public string filename;
 
 
@@ -48,6 +48,7 @@ namespace MAPF
 			this.DoubleBuffered = true;
 			InitMenus();
 			this.Click += new EventHandler(mPathPoint_Click);
+			label1.Text = string.Format("X: {0} Y: {1}", this.src.X, this.src.Y);
 			label4.Text = string.Format("X: {0} Y: {1}", this.goal.X, this.goal.Y);
 
 		}
@@ -57,11 +58,24 @@ namespace MAPF
 			MouseEventArgs e2 = (MouseEventArgs)e;
 			int convX = e2.X / 5;
 			int convY = e2.Y / 5;
-			this.src.X = convX;
-			this.src.Y = convY;
 
-			label1.Text = string.Format("X: {0} Y: {1}", convX, convY);
-			MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
+			if (checkBox1.Checked)
+			{
+				this.src.X = convX;
+				this.src.Y = convY;
+				label1.Text = string.Format("X: {0} Y: {1}", convX, convY);
+				MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
+			}
+			else if(checkBox2.Checked)
+			{
+				this.goal.X = convX;
+				this.goal.Y = convY;
+				label4.Text = string.Format("X: {0} Y: {1}", convX, convY);
+				MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
+			}
+			
+
+			
 		}
 
 		void InitMenus()
@@ -339,6 +353,22 @@ namespace MAPF
 				}
 				Refresh();
 			}
+		}
+
+		private void button8_Click_1(object sender, EventArgs e)
+		{
+			// JPS
+			JPS jps = new JPS();
+
+			var sw = Stopwatch.StartNew();
+			List<Node> path = jps.Search(this.tileMap, this.src, this.goal, 99, 99);
+			sw.Stop();
+			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			foreach (var p in path)
+			{
+				this.tileMap[p.X, p.Y] = 2;
+			}
+			Refresh();
 		}
 	}
 }

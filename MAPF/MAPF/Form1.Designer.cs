@@ -35,8 +35,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
@@ -45,6 +43,9 @@
 			this.button5 = new System.Windows.Forms.Button();
 			this.button6 = new System.Windows.Forms.Button();
 			this.button7 = new System.Windows.Forms.Button();
+			this.button8 = new System.Windows.Forms.Button();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -83,7 +84,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(812, 6);
+			this.label1.Location = new System.Drawing.Point(902, 9);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(46, 17);
 			this.label1.TabIndex = 6;
@@ -103,28 +104,10 @@
 			// 
 			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(728, 6);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(78, 17);
-			this.label2.TabIndex = 13;
-			this.label2.Text = "Start node:";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(728, 23);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(78, 17);
-			this.label3.TabIndex = 14;
-			this.label3.Text = "Goal node:";
-			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(812, 23);
+			this.label4.Location = new System.Drawing.Point(902, 26);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(46, 17);
 			this.label4.TabIndex = 15;
@@ -133,7 +116,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(744, 40);
+			this.label5.Location = new System.Drawing.Point(835, 50);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(61, 17);
 			this.label5.TabIndex = 16;
@@ -142,7 +125,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(812, 40);
+			this.label6.Location = new System.Drawing.Point(903, 50);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(46, 17);
 			this.label6.TabIndex = 17;
@@ -151,7 +134,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(712, 57);
+			this.label7.Location = new System.Drawing.Point(803, 67);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(93, 17);
 			this.label7.TabIndex = 18;
@@ -160,7 +143,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(811, 57);
+			this.label8.Location = new System.Drawing.Point(902, 67);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(46, 17);
 			this.label8.TabIndex = 19;
@@ -188,7 +171,7 @@
 			// 
 			// button7
 			// 
-			this.button7.Location = new System.Drawing.Point(866, 343);
+			this.button7.Location = new System.Drawing.Point(862, 368);
 			this.button7.Name = "button7";
 			this.button7.Size = new System.Drawing.Size(153, 33);
 			this.button7.TabIndex = 22;
@@ -196,11 +179,44 @@
 			this.button7.UseVisualStyleBackColor = true;
 			this.button7.Click += new System.EventHandler(this.button7_Click_1);
 			// 
+			// button8
+			// 
+			this.button8.Location = new System.Drawing.Point(864, 323);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(151, 39);
+			this.button8.TabIndex = 23;
+			this.button8.Text = "Search JPS";
+			this.button8.UseVisualStyleBackColor = true;
+			this.button8.Click += new System.EventHandler(this.button8_Click_1);
+			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(796, 5);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(100, 21);
+			this.checkBox1.TabIndex = 24;
+			this.checkBox1.Text = "Start node:";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Location = new System.Drawing.Point(796, 26);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(100, 21);
+			this.checkBox2.TabIndex = 25;
+			this.checkBox2.Text = "Goal node:";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1045, 690);
+			this.Controls.Add(this.checkBox2);
+			this.Controls.Add(this.checkBox1);
+			this.Controls.Add(this.button8);
 			this.Controls.Add(this.button7);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.button5);
@@ -209,8 +225,6 @@
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button3);
@@ -233,8 +247,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label6;
@@ -243,6 +255,9 @@
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Button button7;
+		private System.Windows.Forms.Button button8;
+		private System.Windows.Forms.CheckBox checkBox1;
+		private System.Windows.Forms.CheckBox checkBox2;
 	}
 }
 
