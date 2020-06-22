@@ -74,7 +74,7 @@ namespace MAPF.Service
 						////n.H = getDistance(n, dest);
 						//n.F = n.G + n.H;
 
-						if (!Q.Any(o => (o.X == col && o.Y == row)))
+						if (!Q.Any(o => (o.X == col && o.Y == row) && !visited.Any(t => (t.X == col && t.Y == row))))
 						{
 							Q.Enqueue(n);
 						}

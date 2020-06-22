@@ -76,7 +76,6 @@ namespace MAPF.Service
 						var n = new Node(currentNode, new Point(col, row));
 						n.G = currentNode.G + 1;
 						n.H = getDistance(n, dest);
-						n.F = n.G + n.H;
 
 						openList.Add(n);
 					}

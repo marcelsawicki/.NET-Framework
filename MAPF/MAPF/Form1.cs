@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Point = MAPF.Model.Point;
 
 namespace MAPF
 {
@@ -309,16 +310,35 @@ namespace MAPF
 		{
 			// DFS
 			DFS dfs = new DFS();
-
+			dfs.Form = this;
 			var sw = Stopwatch.StartNew();
-			List<Node> path = dfs.Search(this.tileMap, this.src, this.goal, 99, 99);
+			int bestLength = int.MaxValue;
+			IEnumerable<Point> bestPath = null;
+			for (int i = 0; i < 5000; i++)
+			{
+				var path = dfs.Search(this.tileMap, this.src, this.goal);
+
+				if (path != null && path.Count() < bestLength)
+				{
+					bestPath = path;
+					bestLength = path.Count();
+				}
+			}
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
-			foreach (var p in path)
+
+			if (bestPath == null)
 			{
-				this.tileMap[p.X, p.Y] = 2;
+				MessageBox.Show("Path does not exist.", "DFS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
-			Refresh();
+			else
+			{
+				foreach (var p in bestPath)
+				{
+					this.tileMap[p.X, p.Y] = 2;
+				}
+				Refresh();
+			}
 		}
 	}
 }

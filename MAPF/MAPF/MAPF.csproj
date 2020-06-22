@@ -81,6 +81,7 @@
     <Compile Include="Service\DFS.cs" />
     <Compile Include="Service\Dijkstra.cs" />
     <Compile Include="Service\Draw.cs" />
+    <Compile Include="Service\Extensions.cs" />
     <Compile Include="Service\GraphReader.cs" />
     <Compile Include="Service\GraphService.cs" />
     <Compile Include="Service\GridService.cs" />

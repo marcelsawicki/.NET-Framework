@@ -96,7 +96,6 @@ namespace MAPF.Service
 						var n = new Node(currentNode, new Point(row, col));
 						n.G = currentNode.G + 1;
 						n.H = getDistance(n, dest);
-						n.F = n.G + n.H;
 
 						successors.Push(n);
 					}

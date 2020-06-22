@@ -10,7 +10,58 @@ namespace MAPF.Service
 {
 	class DFS : ISearch
 	{
-		public List<Node> Search(int[,] tileMap, Point src, Point dest, int gridCols, int gridRows)
+		public System.Windows.Forms.Form Form;
+		Random Random = new Random();
+
+		public IEnumerable<Point> Search(int[,] tileMap, Point startPosition, Point targetPosition)
+		{
+			return Search(tileMap, startPosition, targetPosition, new HashSet<ShortPoint>(), 5000)?.Select(p => p.ToPoint());
+		}
+
+		private List<ShortPoint> Search(int[,] tileMap, ShortPoint currentPosition, ShortPoint targetPosition, HashSet<ShortPoint> visited, int maxPathLength)
+		{
+			if (Form != null)
+			{
+				//tileMap[currentPosition.X, currentPosition.Y] = 2;
+				//Form.Refresh();
+			}
+
+			if (maxPathLength == 0)
+			{
+				return null;
+			}
+
+			if (currentPosition == targetPosition)
+			{
+				return new[] { currentPosition }.ToList();
+			}
+			else
+			{
+				ShortPoint[] unvisitedNeighbours = currentPosition.GetNeighbours(tileMap).Where(n => visited.Contains(n) == false).ToArray();
+
+				if (unvisitedNeighbours.Length > 0)
+				{
+					Random.Shuffle(unvisitedNeighbours);
+
+					foreach (ShortPoint unvisitedNeighbour in unvisitedNeighbours)
+					{
+						visited.Add(unvisitedNeighbour);
+						var path = Search(tileMap, unvisitedNeighbour, targetPosition, visited, maxPathLength - 1);
+						//visited.Remove(unvisitedNeighbour);
+
+						if (path != null)
+						{
+							path.Add(unvisitedNeighbour);
+							return path;
+						}
+					}
+				}
+
+				return null;
+			}
+		}
+
+		public List<Node> Search2(int[,] tileMap, Point src, Point dest, int gridCols, int gridRows)
 		{
 			Node currentNode = null;
 			List<Node> path = new List<Node>();
