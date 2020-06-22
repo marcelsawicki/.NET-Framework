@@ -168,9 +168,15 @@ namespace MAPF.Service
 			// Diagonal Case   
 			if (dX != 0 && dY != 0)
 			{
-				if (/*... Diagonal Forced Neighbor Check ...*/)
+				//if (/*... Diagonal Forced Neighbor Check ...*/)
+				Point point1 = new Point(cX - dX, cY + dY);
+				Point point2 = new Point(cX - dX, cY);
+				Point point3 = new Point(cX + dX, cY - dY);
+				Point point4 = new Point(cX, cY - dY);
+
+				if (point1.IsWalkable(tileMap) && !point2.IsWalkable(tileMap) || point3.IsWalkable(tileMap) && !point4.IsWalkable(tileMap))
 				{
-					return new Point(nextX, nextY);
+					return new Point(nextX, nextY);	
 				}
 
 				// Check in horizontal and vertical directions for forced neighbors
@@ -186,7 +192,13 @@ namespace MAPF.Service
 				// Horizontal case
 				if (dX != 0)
 				{
-					if (/*... Horizontal Forced Neighbor Check ...*/)
+					// if (/*... Horizontal Forced Neighbor Check ...*/)
+					Point point5 = new Point(cX, cY + 1);
+					Point point6 = new Point(cX - dX, cY + 1);
+					Point point7 = new Point(cX, cY - 1);
+					Point point8 = new Point(cX - dX, cY - 1);
+
+					if (point5.IsWalkable(tileMap) && !point6.IsWalkable(tileMap) || point7.IsWalkable(tileMap) && !point8.IsWalkable(tileMap))
 					{
 						return new Point(nextX, nextY);
 					}
@@ -194,7 +206,14 @@ namespace MAPF.Service
 				}
 				else
 				{
-					if (/*... Vertical Forced Neighbor Check ...*/)
+					//if (/*... Vertical Forced Neighbor Check ...*/)
+
+					Point point9 = new Point(cX+1, cY);
+					Point point10 = new Point(cX + 1, cY - dX);
+					Point point11 = new Point(cX - 1, cY);
+					Point point12 = new Point(cX - 1, cY - dY);
+
+					if (point9.IsWalkable(tileMap) && !point10.IsWalkable(tileMap) || point11.IsWalkable(tileMap) && !point12.IsWalkable(tileMap))
 					{
 						return new Point(nextX, nextY);
 					}
@@ -204,34 +223,6 @@ namespace MAPF.Service
 			// If forced neighbor was not found try next jump point
 
 			return jump(nextX, nextY, dX, dY, start, end, tileMap);
-		}
-
-		private Point jump2(int x, int y, int dX, int dY, Point src, Point dest, int[,] tileMap)
-		{
-			var nextX = x + dX;
-			var nextY = y + dY;
-
-			// check if walkable
-			if (tileMap[nextX, nextY]!= 0)
-			{
-				return null;
-			}
-
-			//check if not outside the grid
-			if (nextX <= 0 || nextX >= this.gridCols) return null;
-			if (nextY <= 0 || nextY >= this.gridRows) return null;
-
-			// if node is the goal return it
-			if (nextX == dest.X && nextY == dest.Y)
-			{
-				return new Point(nextX, nextY);
-			}
-
-			// check in horizontal and vertical directions for forced neighbors
-
-			// If forced neighbor was not found try next jump point
-
-			return jump2(nextX, nextY, dX, dY, src, dest, tileMap);
 		}
 
 		private double getDistance(Node n, Point dest)

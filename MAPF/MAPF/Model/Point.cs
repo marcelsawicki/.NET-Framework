@@ -20,8 +20,20 @@ namespace MAPF.Model
 			this.X = X;
 			this.Y = Y;
 		}
-
+		public bool IsWalkable(int[,] tileMap)
+		{
+			if (tileMap[this.X, this.Y] != 1)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
+
+
 
 	public class ShortPoint
 	{
@@ -91,5 +103,6 @@ namespace MAPF.Model
 		{
 			return a.X != b.X || a.Y != b.Y;
 		}
+
 	}
 }
