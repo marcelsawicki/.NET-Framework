@@ -105,7 +105,7 @@ namespace MAPF.Service
 				// successors, prune
 				if (currentNode.ParentNode != null)
 				{
-					Node successor = successors.OrderByDescending(i => i.F).FirstOrDefault();
+					Node successor = successors.OrderBy(i => i.F).FirstOrDefault();
 
 					int dXsuccessor = successor.X - currentNode.X;
 					int dYsuccessor = successor.Y - currentNode.Y;
