@@ -107,8 +107,8 @@ namespace MAPF.Service
 				{
 					Node successor = successors.OrderByDescending(i => i.F).FirstOrDefault();
 
-					int dXsuccessor = currentNode.X - successor.X;
-					int dYsuccessor = currentNode.Y - successor.Y;
+					int dXsuccessor = successor.X - currentNode.X;
+					int dYsuccessor = successor.Y - currentNode.Y;
 
 					if (dXsuccessor != 0 && dYsuccessor != 0) // diagonal case
 					{
@@ -117,6 +117,10 @@ namespace MAPF.Service
 					else // ortogonal case
 					{ 
 					}
+
+					var dX = successor.X - currentNode.X;
+					var dY = successor.Y - currentNode.Y;
+					var nodeSuccessor = jump(currentNode.X, currentNode.Y, dX, dY, src, dest, tileMap);
 
 				}
 				else
@@ -137,12 +141,11 @@ namespace MAPF.Service
 			path.Add(currentNode);
 			return path;
 		}
-		private Node jump(Node currentNode, Node successor, Point src, Point dest, int[,] tileMap)
+		private Point jump(int cX, int cY, int dX, int dY, Point start, Point end, int[,] tileMap)
 		{
-			var dX = successor.X - currentNode.X;
-			var dY = successor.Y - currentNode.Y;
-			var nextX = successor.X;
-			var nextY = successor.Y;
+
+			var nextX = cX + dX;
+			var nextY = cY + dY;
 
 			// check if walkable
 			if (tileMap[nextX, nextY] != 0)
@@ -155,17 +158,52 @@ namespace MAPF.Service
 			if (nextY <= 0 || nextY >= this.gridRows) return null;
 
 			// if node is the goal return it
-			if (nextX == dest.X && nextY == dest.Y)
+			if (nextX == end.X && nextY == end.Y)
 			{
-				return successor;
+				return new Point(nextX, nextY);
 			}
 
+
 			// check in horizontal and vertical directions for forced neighbors
+			// Diagonal Case   
+			if (dX != 0 && dY != 0)
+			{
+				if (/*... Diagonal Forced Neighbor Check ...*/)
+				{
+					return new Point(nextX, nextY);
+				}
+
+				// Check in horizontal and vertical directions for forced neighbors
+				// This is a special case for diagonal direction
+				if (jump(nextX, nextY, dX, 0, start, end, tileMap) != null ||
+					jump(nextX, nextY, 0, dY, start, end, tileMap) != null)
+				{
+					return new Point(nextX, nextY);
+				}
+			}
+			else
+			{
+				// Horizontal case
+				if (dX != 0)
+				{
+					if (/*... Horizontal Forced Neighbor Check ...*/)
+					{
+						return new Point(nextX, nextY);
+					}
+					/// Vertical case
+				}
+				else
+				{
+					if (/*... Vertical Forced Neighbor Check ...*/)
+					{
+						return new Point(nextX, nextY);
+					}
+				}
+			}
 
 			// If forced neighbor was not found try next jump point
-			successor.X += dX;
-			successor.Y += dY;
-			return jump(currentNode, successor, src, dest, tileMap);
+
+			return jump(nextX, nextY, dX, dY, start, end, tileMap);
 		}
 
 		private Point jump2(int x, int y, int dX, int dY, Point src, Point dest, int[,] tileMap)
