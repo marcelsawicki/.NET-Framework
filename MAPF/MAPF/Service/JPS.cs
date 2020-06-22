@@ -129,6 +129,13 @@ namespace MAPF.Service
 						n.H = getDistance(n, dest);
 						openList.Add(n);
 					}
+					else
+					{
+						for (int k = 0; k < successors.Count; k++)
+						{
+							openList.Add(successors.Pop());
+						}
+					}
 				}
 				else
 				{
@@ -154,15 +161,17 @@ namespace MAPF.Service
 			var nextX = cX + dX;
 			var nextY = cY + dY;
 
+
+
+			//check if not outside the grid
+			if (nextX <= 0 || nextX > this.gridCols) return null;
+			if (nextY <= 0 || nextY > this.gridRows) return null;
+
 			// check if walkable
 			if (tileMap[nextX, nextY] == 1)
 			{
 				return null;
 			}
-
-			//check if not outside the grid
-			if (nextX <= 0 || nextX > this.gridCols) return null;
-			if (nextY <= 0 || nextY > this.gridRows) return null;
 
 			// if node is the goal return it
 			if (nextX == end.X && nextY == end.Y)
@@ -186,8 +195,8 @@ namespace MAPF.Service
 					return new Point(cX, cX);	
 				}
 
-				// Check in horizontal and vertical directions for forced neighbors
-				// This is a special case for diagonal direction
+				//// Check in horizontal and vertical directions for forced neighbors
+				//// This is a special case for diagonal direction
 				//if (jump(nextX, nextY, dX, 0, start, end, tileMap) != null ||
 				//	jump(nextX, nextY, 0, dY, start, end, tileMap) != null)
 				//{
