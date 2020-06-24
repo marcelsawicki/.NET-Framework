@@ -18,10 +18,10 @@ namespace MAPF
 	public partial class Form1 : Form
 	{
 		public string text1 = "Pathfinder";
-		public int xx1 = 100;
-		public int yy2 = 100;
+		public static int xx1 = 100;
+		public static int yy2 = 100;
 		List<Node> NodeList = new List<Node>();
-		int[,] tileMap = new int[100, 100];
+		int[,] tileMap = new int[xx1, yy2];
 
 		public Model.Point src = new Model.Point(1, 1);
 		public Model.Point goal = new Model.Point(99,99);
@@ -177,8 +177,7 @@ namespace MAPF
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			this.xx1 = 100;
-			this.yy2 = 100;
+
 			for (int i = 0; i < 1000; i++)
 			{
 				Random random = new Random();
@@ -247,7 +246,7 @@ namespace MAPF
 			Model.Point dest = this.goal;
 			this.tileMap[dest.X, dest.Y] = 0;
 			var sw = Stopwatch.StartNew();
-			List<Node> path = astar.Search(this.tileMap, this.src, dest, 99, 99);
+			List<Node> path = astar.Search(this.tileMap, this.src, dest, xx1-1, yy2-1);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
 			foreach (var p in path)
@@ -262,9 +261,9 @@ namespace MAPF
 			Color pixelColor;
 			// Create a Bitmap object from an image file.
 			Bitmap myBitmap = new Bitmap(this.filename);
-			for (int g = 1; g < 99; g++)
+			for (int g = 1; g < xx1-1; g++)
 			{
-				for (int k = 1; k < 99; k++)
+				for (int k = 1; k < yy2-1; k++)
 				{
 					pixelColor = myBitmap.GetPixel(g, k);
 					if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
@@ -294,7 +293,7 @@ namespace MAPF
 			Dijkstra dijkstra = new Dijkstra();
 
 			var sw = Stopwatch.StartNew();
-			List<Node> path = dijkstra.Search(this.tileMap, this.src, this.goal, 99, 99);
+			List<Node> path = dijkstra.Search(this.tileMap, this.src, this.goal, xx1, yy2);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
 			foreach (var p in path)
@@ -310,7 +309,7 @@ namespace MAPF
 			BFS bfs = new BFS();
 
 			var sw = Stopwatch.StartNew();
-			List<Node> path = bfs.Search(this.tileMap, this.src, this.goal, 99, 99);
+			List<Node> path = bfs.Search(this.tileMap, this.src, this.goal, xx1, yy2);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
 			foreach (var p in path)
@@ -361,7 +360,7 @@ namespace MAPF
 			JPS jps = new JPS();
 
 			var sw = Stopwatch.StartNew();
-			List<Node> path = jps.Search(this.tileMap, this.src, this.goal, 99, 99);
+			List<Node> path = jps.Search(this.tileMap, this.src, this.goal, xx1, yy2);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
 			foreach (var p in path)

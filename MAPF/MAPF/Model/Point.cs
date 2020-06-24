@@ -21,7 +21,9 @@ namespace MAPF.Model
 			this.Y = Y;
 		}
 		public bool IsWalkable(int[,] tileMap)
-		{	if (this.X < 0 || this.Y < 0) { return false; };
+		{	
+			if (this.X < 0 || this.Y < 0) { return false; };
+			if (this.X > 99 || this.Y > 99) { return false; };
 			if (tileMap[this.X, this.Y] != 1)
 			{
 				return true;

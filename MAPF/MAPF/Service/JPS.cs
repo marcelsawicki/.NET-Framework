@@ -1,4 +1,5 @@
-﻿using MAPF.Interface;
+﻿using MAPF.Grid;
+using MAPF.Interface;
 using MAPF.Model;
 using System;
 using System.Collections.Generic;
@@ -20,14 +21,12 @@ namespace MAPF.Service
 			List<Node> path = new List<Node>();
 			List<Node> closeList = new List<Node>();
 			List<Node> openList = new List<Node>();
-			Stack<Node> successors = new Stack<Node>();
+			List<Node> successors = new List<Node>();
 			Point point;
 
 			Node currentNode = null;
 
-			Point srcSrc = new Point(1, 1);
-
-			Node nodeSrc = new Node(null, srcSrc);
+			Node nodeSrc = new Node(null, src);
 
 			openList.Add(nodeSrc);
 
@@ -36,14 +35,16 @@ namespace MAPF.Service
 				currentNode = openList.OrderBy(x => x.F).ElementAt(0); //openList.ElementAt(0);
 				currentNode.Visited = true;
 
+
+
+				closeList.Add(currentNode);
+				openList.RemoveAt(0);
+
 				if (currentNode.X == dest.X && currentNode.Y == dest.Y)
 				{
 					// targed reached
 					break;
 				}
-
-				closeList.Add(currentNode);
-				openList.RemoveAt(0);
 				Point nstart = new Point();
 				nstart.X = currentNode.X - 1 >= 0 ? currentNode.X - 1 : 0;
 				nstart.Y = currentNode.Y - 1 >= 0 ? currentNode.Y - 1 : 0;
@@ -97,53 +98,54 @@ namespace MAPF.Service
 						n.G = currentNode.G + 1;
 						n.H = getDistance(n, dest);
 
-						successors.Push(n);
+						successors.Add(n);
 					}
 
 				}
 
-				// successors, prune
-				if (currentNode.ParentNode != null)
+				for (int s = 0; s < successors.Count; s++)
 				{
-					Node successor = successors.OrderBy(i => i.F).FirstOrDefault();
-
-					int dXsuccessor = successor.X - currentNode.X;
-					int dYsuccessor = successor.Y - currentNode.Y;
-
-					if (dXsuccessor != 0 && dYsuccessor != 0) // diagonal case
+					// successors, prune
+					if (currentNode.ParentNode != null)
 					{
+						Node successor = successors.OrderBy(i => i.F).FirstOrDefault();
 
-					}
-					else // ortogonal case
-					{ 
-					}
+						successors.Remove(successor);
 
-					var dX = successor.X - currentNode.X;
-					var dY = successor.Y - currentNode.Y;
-					var nodeSuccessor = jump(currentNode.X, currentNode.Y, dX, dY, src, dest, tileMap);
+						int dXsuccessor = successor.X - currentNode.X;
+						int dYsuccessor = successor.Y - currentNode.Y;
 
-					if (nodeSuccessor != null)
-					{
-						var n = new Node(currentNode, nodeSuccessor);
-						n.G = currentNode.G + 1;
-						n.H = getDistance(n, dest);
-						openList.Add(n);
+						if (dXsuccessor != 0 && dYsuccessor != 0) // diagonal case
+						{
+
+						}
+						else // ortogonal case
+						{
+						}
+
+						var nodeSuccessor = jump(currentNode.X, currentNode.Y, successor.X, successor.Y, src, dest, tileMap);
+
+						if (nodeSuccessor != null)
+						{
+							var n = new Node(currentNode, nodeSuccessor);
+							n.G = currentNode.G + 1;
+							n.H = getDistance(n, dest);
+							openList.Add(n);
+						}
 					}
 					else
 					{
+						
 						for (int k = 0; k < successors.Count; k++)
 						{
-							openList.Add(successors.Pop());
+							Node successor = successors.OrderBy(i => i.F).FirstOrDefault();
+							successors.Remove(successor);
+							openList.Add(successor);
 						}
 					}
+
 				}
-				else
-				{
-					for (int k = 0; k < successors.Count; k++)
-					{
-						openList.Add(successors.Pop());
-					}
-				}
+
 			}
 
 			while (currentNode.ParentNode != null)
@@ -155,44 +157,44 @@ namespace MAPF.Service
 			path.Add(currentNode);
 			return path;
 		}
-		private Point jump(int cX, int cY, int dX, int dY, Point start, Point end, int[,] tileMap)
+		private Point jump(int iPx, int iPy, int iX, int iY, Point src, Point dest, int[,] tileMap)
 		{
 
-			var nextX = cX + dX;
-			var nextY = cY + dY;
+			var tDx = iX - iPx;
+			var tDy = iY - iPy;
 
 
 
 			//check if not outside the grid
-			if (nextX <= 0 || nextX > this.gridCols) return null;
-			if (nextY <= 0 || nextY > this.gridRows) return null;
+			if (iX <= 0 || iX >= this.gridCols) return null;
+			if (iY <= 0 || iY >= this.gridRows) return null;
 
 			// check if walkable
-			if (tileMap[nextX, nextY] == 1)
+			if (tileMap[iX, iY] == 1)
 			{
 				return null;
 			}
 
 			// if node is the goal return it
-			if (nextX == end.X && nextY == end.Y)
+			if (iX == dest.X && iY == dest.Y)
 			{
-				return new Point(nextX, nextY);
+				return new Point(iX, iY);
 			}
 
 
 			// check in horizontal and vertical directions for forced neighbors
 			// Diagonal Case   
-			if (dX != 0 && dY != 0)
+			if (tDx != 0 && tDy != 0)
 			{
 				//if (/*... Diagonal Forced Neighbor Check ...*/)
-				Point point1 = new Point(cX - dX, cY + dY);
-				Point point2 = new Point(cX - dX, cY);
-				Point point3 = new Point(cX + dX, cY - dY);
-				Point point4 = new Point(cX, cY - dY);
+				Point point1 = new Point(iX - tDx, iY + tDy);
+				Point point2 = new Point(iX - tDx, iY);
+				Point point3 = new Point(iX + tDx, iY - tDy);
+				Point point4 = new Point(iX, iY - tDy);
 
 				if (point1.IsWalkable(tileMap) && !point2.IsWalkable(tileMap) || point3.IsWalkable(tileMap) && !point4.IsWalkable(tileMap))
 				{
-					return new Point(cX, cX);	
+					return new Point(iX, iY);	
 				}
 
 				//// Check in horizontal and vertical directions for forced neighbors
@@ -206,17 +208,17 @@ namespace MAPF.Service
 			else
 			{
 				// Horizontal case
-				if (dX != 0)
+				if (tDx != 0)
 				{
 					// if (/*... Horizontal Forced Neighbor Check ...*/)
-					Point point5 = new Point(cX, cY + 1);
-					Point point6 = new Point(cX - dX, cY + 1);
-					Point point7 = new Point(cX, cY - 1);
-					Point point8 = new Point(cX - dX, cY - 1);
+					Point point5 = new Point(iX + tDx, iY + 1);
+					Point point6 = new Point(iX, iY + 1);
+					Point point7 = new Point(iX + tDx, iY - 1);
+					Point point8 = new Point(iX, iY - 1);
 
 					if (point5.IsWalkable(tileMap) && !point6.IsWalkable(tileMap) || point7.IsWalkable(tileMap) && !point8.IsWalkable(tileMap))
 					{
-						return new Point(nextX, nextY);
+						return new Point(iX, iY);
 					}
 					/// Vertical case
 				}
@@ -224,21 +226,44 @@ namespace MAPF.Service
 				{
 					//if (/*... Vertical Forced Neighbor Check ...*/)
 
-					Point point9 = new Point(cX+1, cY);
-					Point point10 = new Point(cX + 1, cY - dX);
-					Point point11 = new Point(cX - 1, cY);
-					Point point12 = new Point(cX - 1, cY - dY);
+					Point point9 = new Point(iX + 1, iY + tDy);
+					Point point10 = new Point(iX + 1, iY);
+					Point point11 = new Point(iX - 1, iY + tDy);
+					Point point12 = new Point(iX - 1, iY);
 
 					if (point9.IsWalkable(tileMap) && !point10.IsWalkable(tileMap) || point11.IsWalkable(tileMap) && !point12.IsWalkable(tileMap))
 					{
-						return new Point(nextX, nextY);
+						return new Point(iX, iY);
 					}
 				}
 			}
 
-			// If forced neighbor was not found try next jump point
+			// when moving diagonally, must check for vertical/horizontal jump points
+			if (tDx != 0 && tDy != 0)
+			{
+				var jx = jump(iX, iY, iX + tDx, iY, src, dest, tileMap);
+				var jy = jump(iX, iY, iX, iY + tDy, src, dest, tileMap);
+				if (jx != null || jy != null)
+				{
+					return new Point(iX, iY);
+				}
+			}
 
-			return jump(nextX, nextY, dX, dY, start, end, tileMap);
+			// If forced neighbor was not found try next jump point
+			return jump(iX, iY, iX + tDx, iY + tDy, src, dest, tileMap);
+
+			// moving diagonally, must make sure one of the vertical/horizontal
+			// neighbors is open to allow the path
+			//Point point13 = new Point(iX + tDx, iY);
+			//Point point14 = new Point(iX, iY + tDy);
+			//if (point13.IsWalkable(tileMap) && point14.IsWalkable(tileMap))
+			//{
+			//	return jump(iX, iY, iX + tDx, iY + tDy, src, dest, tileMap);
+			//}
+			//else
+			//{
+			//	return null;
+			//}
 		}
 
 		private double getDistance(Node n, Point dest)
