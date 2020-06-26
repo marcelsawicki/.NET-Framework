@@ -22,7 +22,6 @@ namespace MAPF.Service
 			List<Node> closeList = new List<Node>();
 			List<Node> openList = new List<Node>();
 			List<Node> successors = new List<Node>();
-			Point point;
 
 			Node currentNode = null;
 
@@ -136,12 +135,10 @@ namespace MAPF.Service
 					else
 					{
 						
-						for (int k = 0; k < successors.Count; k++)
-						{
+
 							Node successor = successors.OrderBy(i => i.F).FirstOrDefault();
 							successors.Remove(successor);
 							openList.Add(successor);
-						}
 					}
 
 				}
@@ -155,6 +152,7 @@ namespace MAPF.Service
 			}
 
 			path.Add(currentNode);
+			path.Add(new Node(currentNode, dest));
 			return path;
 		}
 		private Point jump(int iPx, int iPy, int iX, int iY, Point src, Point dest, int[,] tileMap)

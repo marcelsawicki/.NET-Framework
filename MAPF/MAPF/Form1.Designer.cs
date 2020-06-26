@@ -46,6 +46,7 @@
 			this.button8 = new System.Windows.Forms.Button();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -209,11 +210,21 @@
 			this.checkBox2.Text = "Goal node:";
 			this.checkBox2.UseVisualStyleBackColor = true;
 			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(903, 96);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(46, 17);
+			this.label2.TabIndex = 26;
+			this.label2.Text = "label2";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1045, 690);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.checkBox2);
 			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.button8);
@@ -258,6 +269,7 @@
 		private System.Windows.Forms.Button button8;
 		private System.Windows.Forms.CheckBox checkBox1;
 		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.Label label2;
 	}
 }
 

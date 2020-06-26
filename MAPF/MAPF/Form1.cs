@@ -27,7 +27,6 @@ namespace MAPF
 		public Model.Point goal = new Model.Point(99,99);
 		public string filename;
 
-
 		private static readonly Random random = new Random();
 		private static readonly object syncLock = new object();
 		public static int RandomNumber(int min, int max)
@@ -64,14 +63,14 @@ namespace MAPF
 				this.src.X = convX;
 				this.src.Y = convY;
 				label1.Text = string.Format("X: {0} Y: {1}", convX, convY);
-				MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
+				//MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
 			}
 			else if(checkBox2.Checked)
 			{
 				this.goal.X = convX;
 				this.goal.Y = convY;
 				label4.Text = string.Format("X: {0} Y: {1}", convX, convY);
-				MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
+				//MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
 			}
 			
 
@@ -169,6 +168,7 @@ namespace MAPF
 						SolidBrush redBrush = new SolidBrush(Color.Red);
 						g.FillRectangle(redBrush, rect1);
 					}
+
 				}
 
 			}
@@ -222,6 +222,7 @@ namespace MAPF
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
+				
 			}
 			Refresh();
 		}
@@ -249,6 +250,7 @@ namespace MAPF
 			List<Node> path = astar.Search(this.tileMap, this.src, dest, xx1-1, yy2-1);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			label2.Text = $"Path length: {path.Count}";
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
@@ -293,9 +295,10 @@ namespace MAPF
 			Dijkstra dijkstra = new Dijkstra();
 
 			var sw = Stopwatch.StartNew();
-			List<Node> path = dijkstra.Search(this.tileMap, this.src, this.goal, xx1, yy2);
+			List<Node> path = dijkstra.Search(this.tileMap, this.src, this.goal, xx1-1, yy2-1);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			label2.Text = $"Path length: {path.Count}";
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
@@ -309,9 +312,10 @@ namespace MAPF
 			BFS bfs = new BFS();
 
 			var sw = Stopwatch.StartNew();
-			List<Node> path = bfs.Search(this.tileMap, this.src, this.goal, xx1, yy2);
+			List<Node> path = bfs.Search(this.tileMap, this.src, this.goal, xx1-1, yy2-1);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+			label2.Text = $"Path length: {path.Count}";
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
@@ -360,14 +364,17 @@ namespace MAPF
 			JPS jps = new JPS();
 
 			var sw = Stopwatch.StartNew();
-			List<Node> path = jps.Search(this.tileMap, this.src, this.goal, xx1, yy2);
+			List<Node> path = jps.Search(this.tileMap, this.src, this.goal, xx1-1, yy2-1);
 			sw.Stop();
 			label8.Text = $"Time: {sw.Elapsed.TotalMilliseconds}ms";
+
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
+				
 			}
 			Refresh();
 		}
+
 	}
 }
