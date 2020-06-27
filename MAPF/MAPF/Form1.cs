@@ -180,9 +180,9 @@ namespace MAPF
 
 			if (this.pathPlan.Count > 0)
 			{
-				for (int i = 0; i < this.pathPlan.Count-1; i++)
+				for (int i = 0; i < this.pathPlan.Count-2; i++)
 				{
-					g.DrawLine(new Pen(Color.Red, 1), this.pathPlan[i].X*5, this.pathPlan[i].Y*5, this.pathPlan[i + 1].X*5, this.pathPlan[i + 1].Y*5);
+					g.DrawLine(new Pen(Color.Black, 2), this.pathPlan[i].X*5, this.pathPlan[i].Y*5, this.pathPlan[i + 1].X*5, this.pathPlan[i + 1].Y*5);
 					
 				}
 				this.pathPlan.Clear();
