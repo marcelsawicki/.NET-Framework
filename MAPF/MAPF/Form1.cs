@@ -17,6 +17,7 @@ namespace MAPF
 
 	public partial class Form1 : Form
 	{
+		public List<Point> pathPlan = new List<Point>();
 		public string text1 = "Pathfinder";
 		public static int xx1 = 100;
 		public static int yy2 = 100;
@@ -176,6 +177,16 @@ namespace MAPF
 				}
 
 			}
+
+			if (this.pathPlan.Count > 0)
+			{
+				for (int i = 0; i < this.pathPlan.Count-1; i++)
+				{
+					g.DrawLine(new Pen(Color.Red, 1), this.pathPlan[i].X*5, this.pathPlan[i].Y*5, this.pathPlan[i + 1].X*5, this.pathPlan[i + 1].Y*5);
+					
+				}
+				this.pathPlan.Clear();
+			}
 		}
 
 
@@ -226,9 +237,11 @@ namespace MAPF
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
+				this.pathPlan.Add(new Point(p.X, p.Y));
 				
 			}
 			Refresh();
+
 		}
 
 		private void button5_Click(object sender, EventArgs e)
@@ -375,7 +388,8 @@ namespace MAPF
 			foreach (var p in path)
 			{
 				this.tileMap[p.X, p.Y] = 2;
-				
+				this.pathPlan.Add(new Point(p.X, p.Y));
+
 			}
 			Refresh();
 		}
