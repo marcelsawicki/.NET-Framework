@@ -63,6 +63,8 @@ namespace MAPF
 				this.src.X = convX;
 				this.src.Y = convY;
 				label1.Text = string.Format("X: {0} Y: {1}", convX, convY);
+				tileMap[convX, convY] = 2;
+				Refresh();
 				//MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
 			}
 			else if(checkBox2.Checked)
@@ -70,6 +72,8 @@ namespace MAPF
 				this.goal.X = convX;
 				this.goal.Y = convY;
 				label4.Text = string.Format("X: {0} Y: {1}", convX, convY);
+				tileMap[convX, convY] = 2;
+				Refresh();
 				//MessageBox.Show(string.Format("X: {0} Y: {1}", convX, convY));
 			}
 			

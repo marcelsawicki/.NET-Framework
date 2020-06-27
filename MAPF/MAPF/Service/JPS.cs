@@ -93,7 +93,7 @@ namespace MAPF.Service
 
 						// Not present in any lists, keep going.
 
-						var n = new Node(currentNode, new Point(row, col));
+						var n = new Node(currentNode, new Point(col, row));
 						n.G = currentNode.G + 1;
 						n.H = getDistance(n, dest);
 
@@ -137,11 +137,10 @@ namespace MAPF.Service
 						
 
 							Node successor = successors.OrderBy(i => i.F).FirstOrDefault();
-							successors.Remove(successor);
 							openList.Add(successor);
 					}
-
 				}
+				successors.Clear();
 
 			}
 

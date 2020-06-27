@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MAPF.Service
 {
-	class DFS : ISearch
+	class DFS
 	{
 		public System.Windows.Forms.Form Form;
 		Random Random = new Random();
